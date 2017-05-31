@@ -1,9 +1,16 @@
-<div class="user-dashboard">
-  <p>Name: <%= current_user.name %></p>
-  <p>Phone Number: <%= current_user.phone %></p>
-  <p>Email: <%= current_user.email %></p>
-  <p>Username: <%= current_user.username %></p>
+<div class='row'>
+    <div class="user-dashboard">
+      <div class='col-md-3'>
+        <%= image_tag current_user.avatar_url + "?type=large", class: 'profile-pic' %>
+      </div><br><br>
+      <div class='col-md-9'>
+      <h4>Name: <%= current_user.name %></h4>
+      <p>Phone Number: <%= current_user.phone %></p>
+      <p>Email: <%= current_user.email %></p>
+      <p>Username: <%= current_user.username %></p>
 
-<%= button_to "Edit Profile", users_dashboard_edit_path(current_user.username), method: :get, class: "btn btn-default" %>
-<%= button_to "Change Password", users_password_reset_path(current_user.username), method: :get, class: "btn btn-default" %>
+      <%= button_to "Edit Profile", users_dashboard_edit_path(current_user.username), method: :get, class: "btn btn-default" %><br>
+      <%= button_to "Change Password", users_password_reset_path(current_user.username), method: :get, class: "btn btn-default" %>
+    </div>
+  </div>
 </div>
