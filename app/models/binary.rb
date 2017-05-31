@@ -9,7 +9,6 @@ class Binary < ApplicationRecord
 
   enum status: %w(active inactive)
 
-  # default_scope { where(status: "active") }
   default_scope { where(status: "active") }
   def url
     folder.url + '/' + name + '.' + extension
