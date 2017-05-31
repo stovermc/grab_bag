@@ -11,7 +11,7 @@
 </span>
 
 
-<div class="preview">
+<div class="preview"><br>
 <%= render_preview(@binary) %>
 </div>
 
@@ -22,9 +22,9 @@
     <div class="panel panel-default">
       <div class="panel-heading"><%= comment.user.username %></div>
       <div class="panel-body"><%= comment.text %></div>
-    </div>
     <%= link_to users_like_comment_path(@binary.folder.owner.username, @binary.folder.route, @binary.name, comment_id: comment.id), method: :post, class: 'btn btn-warning'  do %> <span class="glyphicon glyphicon-thumbs-up">
-    </span> Like Comment<% end %>
+    </span> Like Comment<% end %><br>
     <span class="badge badge-pill badge-danger">Comment Likes: <%= comment.likes.count %></span>
+  </div>
   <% end %>
 </div>
