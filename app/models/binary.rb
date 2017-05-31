@@ -4,7 +4,7 @@ class Binary < ApplicationRecord
   validates :data_url, presence: true
 
   belongs_to :folder
-  has_many :comments
+  has_many :comments,  dependent: :destroy
   has_many :likes, as: :likeable
 
   enum status: %w(active inactive)
