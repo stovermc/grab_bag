@@ -19,7 +19,7 @@ class SignUpController < ApplicationController
 private
 
   def user_params
-    params.require(:user).permit(:username, :phone, :name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:username, :phone, :name, :email, :password, :password_confirmation, :avatar_url)
   end
 
   def facebook_user_params
