@@ -1,4 +1,5 @@
-<h1>Public Folders</h1>
+<h1><%= @folder.name %></h1>
+
 <div class="folder_contents">
   <table class="table">
     <div class="folders">
@@ -8,7 +9,7 @@
       <th>Date Changed</th>
       <th>Status</th>
       <th></th>
-      <% @folders.each do |folder|%>
+      <% @child_folders.each do |folder|%>
         <tr>
           <td><%= image_tag(folder.owner.avatar_url) %></td>
             <td> <%= link_to folder.name, public_folder_path(folder) %>
@@ -20,6 +21,21 @@
           <% end %>
         </tr>
       <% end %>
+      <% @binaries.each do |binary|%>
+        <tr>
+          <td><%= image_tag("https://fakeimg.pl/300/") %></td>
+            <td> <%= link_to binary.name, public_folders_binary_path(binary) %>
+          <td> <%=binary.folder.name%></td>
+          <td> <%=binary.updated_at%></td>
+          <td> <%=binary.status%></td>
+          <% if current_admin? %>
+          <td> <%= link_to 'Delete', folder.url, data: {confirm: 'Are you sure? This will delete all the contents inside the folder as well.'}, method: :delete, class: 'btn btn-danger' %></td>
+          <% end %>
+        </tr>
+      <% end %>
+
+
+
       <br>
     </div>
   </table>
