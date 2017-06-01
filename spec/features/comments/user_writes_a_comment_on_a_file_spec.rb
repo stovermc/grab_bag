@@ -38,7 +38,6 @@ RSpec.feature 'A user can leave a comment on a file' do
 
       expect(current_path).to eq(folder.url)
       click_on binary.name
-# save_and_open_page
       expect(current_path).to eq(binary.url)
       expect(page).to have_field('Comment')
 
