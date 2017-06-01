@@ -1,13 +1,13 @@
 # GRAB BAG
 ## The hottest new way to store and share your files
 
-View it live at: https://grab-bag-1701.herokuapp.com/
+View it live at: https://grabbag.herokuapp.com/
 
 ### Setup
 
 To set up a local copy of this project, perform the following:
 
-* Clone the repository: `git clone https://github.com/glassjoseph/grab_bag.git`
+* Clone the repository: `git clone https://github.com/stovermc/grab_bag`
 * `cd` into the project's directory
 * Run `bundle install`
 * Run `bundle exec rake db:{create,migrate,seed}` to set up the database locally and seed it with files, folders, users, and comments
@@ -78,7 +78,7 @@ Folder
  * Folders have a method `url`, which concatenates a complete route by combining the `owner.username` and the `route`
 
 Binary (File)
- * Binary has a `url` method which builds the url by combining the `folder.url`, `name`, and `extension`
+ * Binaries have a `url` method which builds the url by combining the `folder.url`, `name`, and `extension`
 
 Comment  
  * some stuff here
@@ -92,6 +92,14 @@ Like
  * We minted this with the [bootstrap gem](https://github.com/twbs/bootstrap-sass)
 ### Contributors
 
+#### The contributors for this version of grab-bag are:
+[Mark Stover](https://github.com/stovermc)  
+[Victoria Vasys](https://github.com/victoriavasys)  
+[Seth Moser](https://github.com/seth-at-at)  
+[Stephanie Bentley](https://github.com/slague)  
+[Danny Radden](https://github.com/dannyradden)  
+
+#### The original repo is found at https://github.com/glassjoseph/grab_bag.git; those contributors are:
 [Joseph Glass](https://github.com/glassjoseph)  
 [Jonathan Kidd](https://github.com/jk1dd)  
 [Sam Landfried](https://github.com/samlandfried)  
