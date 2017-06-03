@@ -6,7 +6,7 @@ RSpec.feature "Visitor can create an account" do
     it "visitor can create an account with FB" do
       stub_oauth
 
-      visit landing_page_path
+      visit root_path
 
       click_on "Login with Facebook"
 
@@ -23,7 +23,7 @@ RSpec.feature "Visitor can create an account" do
 
     context 'A visitor tries to create an account with valid details' do
       scenario 'Visitor clicks create account from root' do
-        visit landing_page_path
+        visit root_path
 
         click_on 'Create an Account'
 

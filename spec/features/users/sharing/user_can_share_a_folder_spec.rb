@@ -137,7 +137,7 @@ RSpec.feature 'User can share folders' do
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(other_user)
 
-      visit landing_page_path
+      visit root_path
       click_on 'Folders Shared with Me'
 
       click_on home.name
