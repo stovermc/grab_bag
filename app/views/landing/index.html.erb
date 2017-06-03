@@ -1,19 +1,26 @@
-<div class="welcome">
-  <h1>Welcome to Grab Bag!</h1>
-  <div class="form-group", style="width:50%;">
-  <%= form_for @user, url: sessions_path do |f| %>
-    <div class="form-group">
-      <%= f.label :username %>
-      <%= f.text_field :username, class: "form-control" %>
-    </div>
-    <div class="form-group">
-      <%= f.label :password %>
-      <%= f.password_field :password, class: "form-control" %>
-    </div>
-    <%= f.submit 'Login', class: "btn btn-default" %>
-  <% end %>
+<div class="row">
 
-  <%= link_to "Login with Facebook", facebook_login_path %>
-  <br>
-  <%= link_to "Create an Account", sign_up_path %>
+  <div class="col-md-8">
+    <h1 class="big">Reinventing <br>memework</h1>
+    <h2>The hottest new way to store <br>and share your files</h2>
+  </div>
+  <div class="col-md-4">
+    <br><br>
+    <div class="form-group">
+    <%= form_for @user, url: sessions_path do |f| %>
+      <div class="form-group">
+        <%#= f.label :username %>
+        <%= f.text_field :username, placeholder: "username", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%#= f.label :password %>
+        <%= f.password_field :password, placeholder: "password", class: "form-control" %>
+      </div>
+      <%= f.submit 'Login', class: "btn btn-default login-button" %>
+    <% end %><br>
+
+    <%= link_to "Sign up with Facebook", facebook_login_path %>
+    <br>
+    <%= link_to "Create an Account", sign_up_path %>
+  </div>
 </div>
