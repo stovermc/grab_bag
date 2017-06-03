@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
       end
       resources :users, only: [:index]
+      resources :binary_downloads, only: [:index]
     end
   end
 
@@ -30,6 +31,8 @@ Rails.application.routes.draw do
   namespace :public_folders do
       resources :binaries, only: [:show]
   end
+
+  resources :binary_downloads, only: [:new]
 
   namespace :users, path: ":username" do
     get '/dashboard', to: 'users#show', as: :dashboard
