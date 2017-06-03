@@ -1,10 +1,26 @@
-<nav class="navbar navbar-inverse bg-inverse">
-  <a class="navbar-brand" href='<%= landing_page_path %>'>Grab Bag</a>
-  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+<head>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<script type="text/javascript">
+$(document).ready(function() {
+    $('dropdown-toggle').dropdown()
+});
+</script>
+</head>
+
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="navbar-collapse collapse">
     <ul class="nav navbar-nav">
-        <li><%= link_to "Public Folders", public_folders_path, class: 'nav-link' %></li>
-        <li><%= link_to "Folders Shared with Me", users_shared_folders_path(current_user.username), class: 'nav-link' if current_user %></li>
+      <li><%= link_to "Public Folders", public_folders_path, class: 'nav-link' %></li>
+      <li><%= link_to "Folders Shared with Me", users_shared_folders_path(current_user.username), class: 'nav-link' if current_user %></li>
     </ul>
+    <ul class="nav navbar-nav navbar-center">
+      <a class="navbar-brand" href='<%= landing_page_path %>'>Grabbag</a>
+      <%= link_to image_tag("grab_bag.jpg", :class => 'nav-logo'), landing_page_path %>
+    </ul>
+  <!-- <div class="collapse dropdown navbar-collapse" id="navbarNavDropdown"> -->
+    <!-- <ul class="nav navbar-nav"> -->
     <ul class="nav navbar-nav navbar-right">
 
       <% if current_admin? %>
