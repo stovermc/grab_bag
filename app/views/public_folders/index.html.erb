@@ -10,7 +10,7 @@
       <th></th>
       <% @folders.each do |folder|%>
         <tr>
-          <td><%= image_tag(folder.owner.avatar_url) %></td>
+          <td><%= image_tag(folder.owner.avatar_url, class: "folders-index-image") %></td>
           <td> <%= link_to folder.name, "#{folder.url}"%></td>
           <td> <%=folder.owner.username%></td>
           <td> <%=folder.updated_at%></td>
