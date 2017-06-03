@@ -44,6 +44,7 @@ gem 'database_cleaner'
 gem 'will_paginate'
 gem 'faker', :git => 'git://github.com/stympy/faker.git', :branch => 'master'
 gem 'font-awesome-rails'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
