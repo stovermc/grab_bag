@@ -16,7 +16,12 @@ Rails.application.routes.draw do
   post '/sign_up', to: 'sign_up#create'
   get 'signout', to: 'sessions#destroy', as: 'signout'
 
-  resources :public_folders, only: :index
+  resources :public_folders, only: [:index, :show]
+
+  namespace :public_folders do
+      resources :binaries, only: [:show]
+  end
+
   namespace :users, path: ":username" do
     get '/dashboard', to: 'users#show', as: :dashboard
     get '/dashboard/edit', to: 'users#edit', as: :dashboard_edit

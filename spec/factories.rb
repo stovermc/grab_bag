@@ -42,6 +42,16 @@ FactoryGirl.define do
         end
       end
     end
+
+    factory :user_with_public_folders do
+      after(:create) do |user|
+        user.home.folders << create(:folder, parent: user.home, permission: "root_global")
+        2.times do
+          create(:folder, parent: user.owned_folders.second)
+          create(:binary, folder: user.owned_folders.second)
+        end
+      end
+    end
   end
 
   factory :folder do
