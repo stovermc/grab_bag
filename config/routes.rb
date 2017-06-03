@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   get '/auth/facebook', as: :facebook_login
   get '/auth/facebook/callback', to: "sessions#create", as: :facebook_callback
 
+  get 'dropbox/auth' => 'dropbox#auth'
+  get 'dropbox/auth_callback' => 'dropbox#auth_callback'
+
   get '/admin/users', to: 'users#index'
   patch '/admin/users', to: 'users#update'
 
@@ -23,6 +26,7 @@ Rails.application.routes.draw do
   end
 
   namespace :users, path: ":username" do
+
     get '/dashboard', to: 'users#show', as: :dashboard
     get '/dashboard/edit', to: 'users#edit', as: :dashboard_edit
     patch '/dashboard/edit', to: 'users#update', as: :dashboard_patch

@@ -8,7 +8,7 @@ DatabaseCleaner.clean_with(:truncation)
               phone: '5555555555',
               status: 'active',
               password: 'banana',
-              avatar_url: Faker::Avatar.image("#{Faker::Internet.email}", "50x50"))
+              avatar_url: Faker::Avatar.image("#{Faker::Internet.email}"))
   puts "User #{user.username} created"
 
 
