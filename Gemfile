@@ -40,6 +40,7 @@ gem 'bcrypt'
 gem 'database_cleaner'
 gem 'will_paginate'
 gem 'faker', :git => 'git://github.com/stympy/faker.git', :branch => 'master'
+gem 'doorkeeper'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
