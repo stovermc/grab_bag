@@ -3,6 +3,15 @@ Rails.application.routes.draw do
 
   root 'landing#index', as: :landing_page
 
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      namespace :users do
+
+      end
+      resources :users, only: [:index]
+    end
+  end
+
   get '/auth/facebook', as: :facebook_login
   get '/auth/facebook/callback', to: "sessions#create", as: :facebook_callback
 
