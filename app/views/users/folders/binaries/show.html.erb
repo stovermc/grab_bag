@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <h1>File: <%= @binary.name %></h1>
 <%= link_to 'Download', new_binary_download_path(binary_id: @binary.id), class: 'btn btn-primary' %>
 <%= link_to 'Delete', @binary.url, data: {confirm: 'Are you sure?'}, method: :delete, class: 'btn btn-danger' %>
@@ -7,24 +8,48 @@
 <span class="badge badge-pill badge-danger">
   <div class="likes">
     File Likes: <%= @binary.likes.count %>
+=======
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>File: <%= @binary.name %></h1>
+    </div>
+>>>>>>> staging
   </div>
-</span>
-
-
-<div class="preview"><br>
-<%= render_preview(@binary) %>
-</div>
-
-<%= render partial: 'shared/comments' %>
-
-<div class="comments">
-  <% @binary.comments.each do |comment| %>
-    <div class="panel panel-default">
-      <div class="panel-heading"><%= comment.user.username %></div>
-      <div class="panel-body"><%= comment.text %></div>
-    <%= link_to users_like_comment_path(@binary.folder.owner.username, @binary.folder.route, @binary.name, comment_id: comment.id), method: :post, class: 'btn btn-warning'  do %> <span class="glyphicon glyphicon-thumbs-up">
-    </span> Like Comment<% end %><br>
-    <span class="badge badge-pill badge-danger">Comment Likes: <%= comment.likes.count %></span>
+  <div class="row">
+    <div class="col-md-12">
+      <%= link_to 'Download', @binary.data_url, class: 'btn btn-primary' %>
+      <%= link_to 'Delete', @binary.url, data: {confirm: 'Are you sure?'}, method: :delete, class: 'btn btn-danger' %>
+      <%= link_to users_like_file_path(@binary), method: :post, class: 'btn btn-warning' do %>
+      <span class="glyphicon glyphicon-thumbs-up"></span> Like File <% end %>
+      <span class="badge badge-pill badge-danger">
+        <div class="likes">
+          File Likes: <%= @binary.likes.count %>
+        </div>
+      </span>
+    </div><br>
   </div>
-  <% end %>
+  <div class="row">
+    <div class="preview col-md-4"><br>
+      <%= render_preview(@binary)%>
+    </div>
+  </div><br>
+
+
+  <div class="row">
+    <div class="col-md-8">
+      <%= render partial: 'shared/comments' %>
+      <div class="comments">
+        <% @binary.comments.each do |comment| %>
+        <div class="panel panel-default">
+          <div class="panel-heading"><%= comment.user.username %></div>
+          <div class="panel-body"><%= comment.text %></div>
+          <%= link_to users_like_comment_path(@binary.folder.owner.username, @binary.folder.route, @binary.name, comment_id: comment.id), method: :post, class: 'btn btn-warning'  do %> <span class="glyphicon glyphicon-thumbs-up">
+          </span> Like Comment<% end %><br>
+          <span class="badge badge-pill badge-danger">Comment Likes: <%= comment.likes.count %></span>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
