@@ -17,10 +17,9 @@ Rails.application.routes.draw do
   get '/auth/facebook/callback', to: "sessions#create", as: :facebook_callback
 
   namespace :admin do
-    resources :dashboard, only: [:index]
+    get '/dashboard', to: 'dashboard#index'
+    resources :users, only: [:index, :update]
   end
-  get '/admin/users', to: 'users#index'
-  patch '/admin/users', to: 'users#update'
 
   resources :confirmations, only: [:new, :create]
   resources :sessions, only: [:create]
