@@ -41,7 +41,7 @@ class Users::FoldersController < Users::BaseController
     if user == current_user
       redirect_to parent.url, success: "#{folder.name} Successfully Deleted!"
     else
-      redirect_to landing_page_path, success: "#{folder.name} Successfully Deleted!"
+      redirect_to root_path, success: "#{folder.name} Successfully Deleted!"
     end
   end
 

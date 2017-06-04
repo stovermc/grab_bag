@@ -8,7 +8,7 @@ feature 'log_in' do
 
       stub_oauth
 
-      visit landing_page_path
+      visit root_path
 
       within '.welcome' do
         click_on 'Sign Up or Log In with Facebook'

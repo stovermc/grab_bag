@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
+  use_doorkeeper
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  root 'landing#index', as: :landing_page
+  root 'landing#index', as: :root
 
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
-      namespace :users do
-
+      namespace :sharing do
+        resources :folders, only: [:index, :show]
       end
       resources :users, only: [:index]
       resources :binary_downloads, only: [:index]
