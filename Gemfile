@@ -40,7 +40,7 @@ gem 'bcrypt'
 gem 'database_cleaner'
 gem 'will_paginate'
 gem 'faker', :git => 'git://github.com/stympy/faker.git', :branch => 'master'
-gem 'mailcatcher'
+gem 'active_model_serializers'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

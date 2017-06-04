@@ -24,7 +24,7 @@ RSpec.feature "User can create a new binary" do
 
       attach_file(:binary_data_url, Rails.root + "spec/fixtures/files/test.txt")
 
-      click_on "Create Binary"
+      click_on "Create File"
 
       expect(current_path).to eq("/#{user.username}/home")
       expect(page).to have_content('text.txt')
