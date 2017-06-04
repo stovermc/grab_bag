@@ -12,7 +12,6 @@
 
 ActiveRecord::Schema.define(version: 20170603195812) do
 
-
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -131,7 +130,6 @@ ActiveRecord::Schema.define(version: 20170603195812) do
     t.string   "password_digest"
     t.integer  "role",              default: 0
     t.string   "verification_code"
-
     t.string   "avatar_url",        default: "https://robohash.org/omnisquiavoluptatem.png?size=300x300&set=set1"
   end
 
