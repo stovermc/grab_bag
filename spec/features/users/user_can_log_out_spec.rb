@@ -11,12 +11,12 @@ feature 'log_out' do
       visit '/'
 
       within '.welcome' do
-        click_on 'Login with Facebook'
+        click_on 'Sign Up or Log In with Facebook'
       end
 
       click_on 'Logout'
       expect(current_path).to eq('/')
-      expect(page).to have_link "Login"
+      expect(page).to have_link "Sign Up"
 
     end
 
@@ -27,11 +27,11 @@ feature 'log_out' do
       fill_in 'user[username]', with: user.username
       fill_in 'user[password]', with: 'banana'
 
-      click_on 'Login'
+      click_on 'Log In with Grab Bag'
 
       click_on 'Logout'
       expect(current_path).to eq('/')
-      expect(page).to have_link "Login"
+      expect(page).to have_link "Sign Up"
     end
   end
 end

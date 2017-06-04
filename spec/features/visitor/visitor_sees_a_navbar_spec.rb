@@ -5,7 +5,7 @@ RSpec.feature 'Visitors can see a navbar' do
     visit landing_page_path
 
     within '.navbar' do
-      expect(page).to have_link 'Login With Facebook'
+      expect(page).to have_link 'Sign Up'
       expect(page).to have_link 'Public Folders'
       expect(page).to have_link 'Grab Bag'
     end
