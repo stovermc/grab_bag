@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       namespace :sharing do
-        resources :folders, only: [:index]
+        resources :folders, only: [:index, :show]
       end
       resources :users, only: [:index]
       resources :binary_downloads, only: [:index]
