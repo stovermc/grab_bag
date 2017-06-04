@@ -11,7 +11,7 @@ RSpec.feature 'Visitors can see all public folders' do
   end
   
   scenario 'Visitor visits root path' do
-    visit landing_page_path
+    visit root_path
     click_on "Public Folders"
 
     expect(current_path).to eq(public_folders_path)
@@ -24,7 +24,7 @@ RSpec.feature 'Visitors can see all public folders' do
 
 
   scenario 'Visitor visits a public folder show page' do
-    visit landing_page_path
+    visit root_path
     click_on "Public Folders"
     click_on @folder1a.name
 
