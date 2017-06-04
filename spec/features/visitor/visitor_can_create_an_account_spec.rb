@@ -8,7 +8,7 @@ RSpec.feature "Visitor can create an account" do
 
       visit landing_page_path
 
-      click_on "Login with Facebook"
+      click_on "Sign Up or Log In with Facebook"
 
       expect(current_path).to eq(sign_up_path)
 
