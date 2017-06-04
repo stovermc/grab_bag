@@ -16,6 +16,9 @@ Rails.application.routes.draw do
   get '/auth/facebook', as: :facebook_login
   get '/auth/facebook/callback', to: "sessions#create", as: :facebook_callback
 
+  namespace :admin do
+    resources :dashboard, only: [:index]
+  end
   get '/admin/users', to: 'users#index'
   patch '/admin/users', to: 'users#update'
 
@@ -29,7 +32,7 @@ Rails.application.routes.draw do
   resources :public_folders, only: [:index, :show]
 
   namespace :public_folders do
-      resources :binaries, only: [:show]
+    resources :binaries, only: [:show]
   end
 
   resources :binary_downloads, only: [:new]
