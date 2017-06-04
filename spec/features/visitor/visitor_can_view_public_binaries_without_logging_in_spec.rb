@@ -12,7 +12,7 @@ RSpec.feature 'Visitors can see public binaries without logging in' do
   end
 
   scenario 'Visitor can visit a public binary page from its folders show page' do
-    visit landing_page_path
+    visit root_path
     click_on "Public Folders"
     click_on @folder1a.name
 
