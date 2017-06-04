@@ -1,14 +1,17 @@
 require 'database_cleaner'
 
 DatabaseCleaner.clean_with(:truncation)
-101.times do |n|
+total_users = 101
+
+total_users.times do |n|
   user = User.create!(name: Faker::LordOfTheRings.character,
               username: "user#{n}",
               email: Faker::Internet.safe_email,
               phone: '5555555555',
               status: 'active',
               password: 'banana',
-              avatar_url: Faker::Avatar.image("#{Faker::Internet.email}"))
+              avatar_url: Faker::Avatar.image("#{Faker::Internet.email}"),
+              created_at: Date.today - rand(365))
   puts "User #{user.username} created"
 
 
@@ -27,9 +30,9 @@ DatabaseCleaner.clean_with(:truncation)
     user.folders_shared_with << User.last(3).first.home
     folder3 = Folder.create!(name: "Pub Folder#{n}", parent: user.home, permission: 'root_global')
     folder4 = Folder.create!(name: "Pies#{n}", parent: folder1)
+    folder5 = Folder.create!(name: "Internal Pub Folder#{n}", parent: folder3, permission: 'global')
     binary3 = Binary.create!(name: "Strombolies#{n}", folder: folder3, data_url: "https://s3-us-west-1.amazonaws.com/1701grabbag/uploads/stromboli.jpg", extension: ".jpg")
-    binary3 = Binary.create!(name: "Stromb#{n}", folder: folder4, data_url: "https://s3-us-west-1.amazonaws.com/1701grabbag/uploads/stromboli.jpg", extension: ".jpg")
-    binary3 = Binary.create!(name: "Pasta#{n}", folder: folder4, data_url: "https://s3-us-west-1.amazonaws.com/1701grabbag/uploads/stromboli.jpg", extension: ".jpg")
+    binary5 = Binary.create!(name: "Stromb#{n}", folder: folder4, data_url: "https://s3-us-west-1.amazonaws.com/1701grabbag/uploads/stromboli.jpg", extension: ".jpg")
   end
 
   user.owned_folders.each do |folder|
@@ -55,3 +58,5 @@ DatabaseCleaner.clean_with(:truncation)
 end
 
 User.last.update(name: 'Gandalf', role:'admin', username: "admin1", avatar_url: "https://thumb.ibb.co/htakav/default_profile.jpg")
+
+# BinaryDownload.create!(user_id: rand(total_users), binary_id: rand(total_users))

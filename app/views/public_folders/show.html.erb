@@ -23,7 +23,7 @@
         <tr>
           <td><%= image_tag("https://fakeimg.pl/300/") %></td>
             <td> <%= link_to binary.name, public_folders_binary_path(binary) %>
-          <td> <%=binary.folder.name%></td>
+          <td> <%=binary.folder.owner.username%></td>
           <td> <%=binary.updated_at%></td>
           <td> <%=binary.status%></td>
           <% if current_admin? %>
