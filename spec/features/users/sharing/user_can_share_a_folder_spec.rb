@@ -122,7 +122,7 @@ RSpec.feature 'User can share folders' do
 
       attach_file('binary[data_url]', file_path)
 
-      click_on 'Create Binary'
+      click_on 'Create File'
 
       expect(current_path).to eq Binary.last.url
     end

@@ -6,7 +6,6 @@ class Users::Folders::InvitesController < ApplicationController
   end
 
   def create
-    # require "pry"; binding.pry
     if User.find_by(email: params[:users_folder_new_share_invitation][:email])
       user = User.find_by(username: params[:username])
       folder = user.owned_folders.find_by(route: params[:route])

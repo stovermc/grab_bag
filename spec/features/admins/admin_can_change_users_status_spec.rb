@@ -6,7 +6,7 @@ RSpec.feature "Admin can change a user's status" do
     scenario "Admin can disable a user" do
       stub_admin
       user = create(:user)
-      visit admin_users_path(@admin)
+      visit admin_users_path
 
       within(".#{user.username}") do
         expect(page).to have_content("active")
@@ -14,7 +14,7 @@ RSpec.feature "Admin can change a user's status" do
         click_on("Disable")
       end
 
-      visit admin_users_path(@admin)
+      visit admin_users_path
 
       within(".#{user.username}") do
         expect(page).to have_content("inactive")
@@ -27,7 +27,7 @@ RSpec.feature "Admin can change a user's status" do
     scenario "Admin can disable a user" do
       stub_admin
       user = create(:inactive_user)
-      visit admin_users_path(@admin)
+      visit admin_users_path
 
       within(".#{user.username}") do
         expect(page).to have_content("inactive")
@@ -35,7 +35,7 @@ RSpec.feature "Admin can change a user's status" do
         click_on("Enable")
       end
 
-      visit admin_users_path(@admin)
+      visit admin_users_path
 
       within(".#{user.username}") do
         expect(page).to have_content("active")

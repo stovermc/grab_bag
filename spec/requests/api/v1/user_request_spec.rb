@@ -24,5 +24,6 @@ describe "Users API" do
     expect(users.first).to have_key("email")
     expect(users.first).to have_key("phone")
     expect(users.first).to_not have_key("password")
+    expect(users.first).to_not have_key("password_diget")
   end
 end

@@ -1,10 +1,15 @@
-<nav class="navbar navbar-inverse bg-inverse">
-  <a class="navbar-brand" href='<%= root_path %>'>Grab Bag</a>
-  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="navbar-collapse collapse">
     <ul class="nav navbar-nav">
-        <li><%= link_to "Public Folders", public_folders_path, class: 'nav-link' %></li>
-        <li><%= link_to "Folders Shared with Me", users_shared_folders_path(current_user.username), class: 'nav-link' if current_user %></li>
+      <li><%= link_to "Public Folders", public_folders_path, class: 'nav-link' %></li>
+      <li><%= link_to "Folders Shared with Me", users_shared_folders_path(current_user.username), class: 'nav-link' if current_user %></li>
     </ul>
+    <ul class="nav navbar-nav navbar-center">
+      <a class="navbar-brand" href='<%= landing_page_path %>'>Grab Bag</a>
+      <%= link_to image_tag("dropbox-icon-2.png", :class => 'nav-logo'), landing_page_path %>
+    </ul>
+  <!-- <div class="collapse dropdown navbar-collapse" id="navbarNavDropdown"> -->
+    <!-- <ul class="nav navbar-nav"> -->
     <ul class="nav navbar-nav navbar-right">
 
       <% if current_admin? %>
