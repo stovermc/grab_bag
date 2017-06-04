@@ -9,7 +9,7 @@ RSpec.feature 'Visitor can view root path' do
       expect(page).to have_content('Reinventing memework')
 
       within('.welcome') do
-        expect(page).to have_link('Login with Facebook')
+        expect(page).to have_link('Sign Up or Log In with Facebook')
       end
     end
   end
