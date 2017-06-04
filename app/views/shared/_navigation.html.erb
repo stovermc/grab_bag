@@ -20,7 +20,7 @@
         <li><%= link_to users_dashboard_path(current_user.username), class: 'nav-link' do %> <span class="glyphicon glyphicon-user"></span> My Profile</li> <% end %>
         <li><%= link_to signout_path, class: 'nav-link' do %> <span class="glyphicon glyphicon-log-out"></span> Logout</li><% end %>
       <% else %>
-        <li><a class="nav-link" href="<%= landing_page_path %>">Sign Up</a></li>
+        <li><a class="nav-link" href="<%= root_path %>">Sign Up</a></li>
       <% end %>
     </ul>
   </div>
