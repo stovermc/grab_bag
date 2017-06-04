@@ -1,4 +1,4 @@
-<head>
+<!-- <head>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
@@ -7,7 +7,7 @@ $(document).ready(function() {
     $('dropdown-toggle').dropdown()
 });
 </script>
-</head>
+</head> -->
 
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="navbar-collapse collapse">
@@ -15,11 +15,11 @@ $(document).ready(function() {
         <li><%= link_to "Public Folders", public_folders_path, class: 'nav-link' %></li>
         <% if current_user  %>
         <li><%= link_to "Folders Shared with Me", users_shared_folders_path(current_user.username), class: 'nav-link' %></li>
-        <li> <%= link_to "Dropbox", dropbox_auth_path, class: 'btn btn-block btn-social btn-dropbox' %> </li>
+        <li> <%= link_to "Connect to Dropbox", dropbox_auth_path, class: 'btn btn-block btn-social btn-dropbox' %> </li>
 
-        <a class="btn btn-block btn-social btn-dropbox" href"<%= dropbox_auth_path %>">
+        <!-- <a class="btn btn-block btn-social btn-dropbox" href"<%#= dropbox_auth_path %>">
           <span class="fa fa-dropbox"></span> Connect to Dropbox
-        </a>
+        </a> -->
         <% end %>
     <ul class="nav navbar-nav navbar-center">
       <a class="navbar-brand" href='<%= landing_page_path %>'>Grabbag</a>

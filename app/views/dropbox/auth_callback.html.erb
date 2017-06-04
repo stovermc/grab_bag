@@ -12,8 +12,8 @@ Space used on Dropbox: <%= @space_used  %><br><br>
 <div class="row">
   <div class="col-md-6">
   <% @home_folder_contents.each do |entry| %>
-  <div class="col-md-6"><h4><%= entry.name  %>
-  <%= link_to "Download", @client.download("/picture.jpg") %></h4></div> 
+  <div class="col-md-6"><h4><%= link_to entry.name  %> <i>(<%= entry.class.to_s.split('::')[2] %>)</i></div>
+  <!-- <%#= link_to "Download", @client.download("/picture.jpg") %></h4></div>  -->
   <% end  %>
   </div>
 </div>

@@ -19,22 +19,18 @@ class DropboxController < ApplicationController
     @home_folder_contents = @client.list_folder("").entries
 
     # require "pry"; binding.pry
-
     # client.download()
-
     # At this stage you may want to persist the reusable token we've acquired.
     # Remember that it's bound to the Dropbox account of your user.
     # Keep this token, you'll need it to initialize a `DropboxApi::Client` object
 
     # If you persist this token, you can use it in subsequent requests or
     # background jobs to perform calls to Dropbox API such as the following.
-
   end
 
-  def download
-    client
+  def download(path)
+    client.download(path)
   end
-
 
   private
   attr_reader :client
@@ -44,10 +40,7 @@ class DropboxController < ApplicationController
   end
 
   def redirect_uri
-    # "https://www.dropbox.com/1/oauth2/redirect_receiver"
     "http://localhost:3000/dropbox/auth_callback"
-    # "/dropbox/auth_callback"
-    # dropbox_auth_callback_path# =>
   end
 
 
