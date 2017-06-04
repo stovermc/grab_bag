@@ -38,7 +38,7 @@
         <div class="binaries">
           <% @current_folder.binaries.each do |binary|%>
             <tr class="binary">
-              <td> <%=link_to binary.name, new_binary_download_path(binary_id: binary.id)%></td>
+              <td> <%=link_to binary.name, binary.url%></td>
               <td> <%=binary.extension%></td>
               <td> <%=binary.updated_at%></td>
               <td></td>

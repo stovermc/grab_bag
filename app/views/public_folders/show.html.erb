@@ -16,9 +16,7 @@
           <td> <%=folder.owner.username%></td>
           <td> <%=folder.updated_at%></td>
           <td> <%=folder.permission%></td>
-          <% if current_admin? %>
-          <td> <%= link_to 'Delete', folder.url, data: {confirm: 'Are you sure? This will delete all the contents inside the folder as well.'}, method: :delete, class: 'btn btn-danger' %></td>
-          <% end %>
+          <td> <%= current_admin_delete_button(current_user, folder) %></td>
         </tr>
       <% end %>
       <% @binaries.each do |binary|%>
