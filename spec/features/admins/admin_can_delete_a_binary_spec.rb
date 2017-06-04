@@ -16,7 +16,7 @@ RSpec.feature do
 
       click_on "#{global_folder.name}"
 
-      expect(current_path).to eq(global_folder.url)
+      expect(current_path).to eq(public_folder_path(global_folder))
       expect(page).to have_content("#{binary.name}")
 
       click_on 'Delete'
