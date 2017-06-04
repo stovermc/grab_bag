@@ -6,10 +6,10 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
-      namespace :users do
-
+        resources :users, only: [:index]
+      namespace :sharing do
+        resources :folders, only: [:index]
       end
-      resources :users, only: [:index]
     end
   end
 
