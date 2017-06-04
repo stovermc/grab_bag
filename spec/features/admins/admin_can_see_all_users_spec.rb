@@ -12,7 +12,7 @@ RSpec.feature "Admin can see all users" do
       user1 = create(:user)
       user2 = create(:inactive_user)
 
-      visit admin_users_path(@admin)
+      visit admin_users_path
 
       # expect(current_path).to eq('admin/users')
       within(".#{user1.username}") do
