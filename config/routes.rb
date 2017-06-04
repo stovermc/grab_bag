@@ -3,14 +3,27 @@ Rails.application.routes.draw do
 
   root 'landing#index', as: :landing_page
 
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      namespace :users do
+
+      end
+      resources :users, only: [:index]
+      resources :binary_downloads, only: [:index]
+    end
+  end
+
   get '/auth/facebook', as: :facebook_login
   get '/auth/facebook/callback', to: "sessions#create", as: :facebook_callback
 
   get 'dropbox/auth' => 'dropbox#auth'
   get 'dropbox/auth_callback' => 'dropbox#auth_callback'
 
-  get '/admin/users', to: 'users#index'
-  patch '/admin/users', to: 'users#update'
+  namespace :admin do
+    get '/dashboard', to: 'dashboard#index'
+    resources :users, only: [:index, :update]
+  end
+
 
   resources :confirmations, only: [:new, :create]
   resources :sessions, only: [:create]
@@ -22,8 +35,10 @@ Rails.application.routes.draw do
   resources :public_folders, only: [:index, :show]
 
   namespace :public_folders do
-      resources :binaries, only: [:show]
+    resources :binaries, only: [:show]
   end
+
+  resources :binary_downloads, only: [:new]
 
   namespace :users, path: ":username" do
 
