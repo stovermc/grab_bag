@@ -1,24 +1,25 @@
 require 'rails_helper'
 
-describe "Users API" do
-  xit "sends a list of folders" do
-    user = create(:user_with_folders)
-    token = double(Doorkeeper::AccessToken, acceptable?: true)
-    allow_any_instance_of(Api::V1::Sharing::FoldersController).to receive(:doorkeeper_token) {token}
+describe Api::V1::Sharing::FoldersController do
+  let!(:application) { create :application }
+  let!(:user)        { create :user_with_folders }
+  let!(:token)       { create :access_token,
+                              :application => application,
+                              :resource_owner_id => user.id }
+  describe 'GET #index' do
+    it 'responds with 200' do
+      get '/api/v1/sharing/folders', params: {access_token: token.token}
+      expect(response).to be_success
+    end
 
-
-    get '/api/v1/sharing/folders', {access_token: token}
-
-    expect(response).to be_success
-
-    folders = JSON.parse(response.body)
-    # binding.pry
-
-    expect(folders.count).to eq(2)
-    expect(folders.first).to have_key("name")
-    expect(folders.first).to have_key("username")
-    expect(folders.first).to have_key("email")
-    expect(folders.first).to have_key("phone")
-    expect(folders.first).to_not have_key("password")
+    it "returns list of user's" do
+      get '/api/v1/sharing/folders', params: {access_token: token.token}
+      folders = JSON.parse(response.body)
+      expect(folders.count).to eq(4)
+      expect(folders.first).to have_key("name")
+      expect(folders.first).to have_key("user_id")
+      expect(folders.first).to have_key("folder_id")
+      expect(folders.first).to have_key("route")
+    end
   end
 end
