@@ -12,8 +12,8 @@
         </a> -->
         <% end %>
     <ul class="nav navbar-nav navbar-center">
-      <a class="navbar-brand" href='<%= landing_page_path %>'>Grab Bag</a>
-      <%= link_to image_tag("dropbox-icon-2.png", :class => 'nav-logo'), landing_page_path %>
+      <a class="navbar-brand" href='<%= root_path %>'>Grab Bag</a>
+      <%= link_to image_tag("dropbox-icon-2.png", :class => 'nav-logo'), root_path %>
     </ul>
   <!-- <div class="collapse dropdown navbar-collapse" id="navbarNavDropdown"> -->
     <!-- <ul class="nav navbar-nav"> -->
@@ -28,7 +28,7 @@
         <li><%= link_to signout_path, class: 'nav-link' do %> <span class="glyphicon glyphicon-log-out"></span> Logout</li><% end %>
       <% else %>
 
-        <li><%=link_to "Login With Facebook", facebook_login_path %></li>
+        <li><a class="nav-link" href="<%= root_path %>">Sign Up</a></li>
       <% end %>
     </ul>
   </div>

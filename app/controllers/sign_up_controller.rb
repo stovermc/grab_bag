@@ -3,6 +3,7 @@ class SignUpController < ApplicationController
     if params[:info]
       @user = User.new(fb_id: params[:info][:uid])
       session[:user_info] = params[:info]
+      flash[:success] = 'Almost done! Please create a username & fill in your phone number.'
     else
       @user = User.new
     end

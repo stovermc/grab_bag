@@ -13,7 +13,7 @@ class Users::Folders::InvitesController < ApplicationController
 
       Users::Folders::Invites::InviterMailer.invite(current_user, folder, invitee_email).deliver_now
 
-      redirect_to landing_page_path, success: "Invited #{user.name} to share #{current_folder.name}"
+      redirect_to root_path, success: "Invited #{user.name} to share #{current_folder.name}"
     else
       flash[:danger] = 'User Does Not Exist'
       redirect_to :back

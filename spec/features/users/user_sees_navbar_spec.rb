@@ -10,7 +10,7 @@ RSpec.feature 'User can see a navbar' do
     end
 
     scenario 'Navbar from root path' do
-      visit landing_page_path
+      visit root_path
 
       within '.navbar' do
         expect(page).to have_link 'Grab Bag'
@@ -25,7 +25,7 @@ RSpec.feature 'User can see a navbar' do
       folder2 = create :folder, owner: user, parent: user.home, permission: :root_global
       folder3 = create :folder, owner: user, parent: user.home
 
-      visit landing_page_path
+      visit root_path
 
       click_on 'Public Folders'
 
