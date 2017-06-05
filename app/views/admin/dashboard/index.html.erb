@@ -1,0 +1,52 @@
+<script src="http://d3js.org/d3.v4.min.js"></script>
+<script src="http://dimplejs.org/dist/dimple.v2.3.0.min.js"></script>
+
+<div class="main-container">
+  <h1>Downloads per day</h1>
+  
+  <script type="text/javascript">
+  var loadData = function(){
+                  $.ajax({
+                    type: 'GET',
+                    contentType: 'application/json; charset=utf-8',
+                    url: '/api/v1/binary_downloads',
+                    dataType: 'json',
+                    success: function(data){
+                      drawBarPlot(data);
+                    },
+                    failure: function(result){
+                      error();
+                    }
+                  });
+                };
+  
+    function drawBarPlot(data) {
+    
+      var svg = dimple.newSvg("body", 800, 600);
+      var data = [
+        { "Word":"Hello", "Awesomeness":2000 },
+        { "Word":"World", "Awesomeness":3000 }
+      ];
+      var chart = new dimple.chart(svg, data);
+      chart.addCategoryAxis("x", "created_at");
+      chart.addMeasureAxis("y", "Awesomeness");
+      chart.addSeries(null, dimple.plot.bar);
+      chart.draw();
+  }
+  
+  $(document).ready(function(){ 
+    loadData();
+  });
+  </script>
+  
+  <!-- <div id="vote-counter">
+    <h3>Vote count</h3> 
+    <p>Red: <span id="red-count"><%#= @votes[0] %></span></p>
+    <p>Blue: <span id="blue-count"><%#= @votes[1] %></span></p>
+  </div> -->
+
+  <div id="plot-container">
+    <svg id="plot"></svg>
+  </div>
+
+</div>
