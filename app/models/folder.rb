@@ -2,6 +2,7 @@ class Folder < ApplicationRecord
   validates :name, presence: true
   validates :route, presence: true
   validates :route, uniqueness: { scope: [:user_id] }
+  validates :user_id, presence: true
 
   before_validation :get_slug
   before_validation :get_user

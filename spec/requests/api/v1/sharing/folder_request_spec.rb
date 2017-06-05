@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe "Users API" do
-  it "sends a list of folders" do
+  xit "sends a list of folders" do
     user = create(:user_with_folders)
     token = double(Doorkeeper::AccessToken, acceptable?: true)
     allow_any_instance_of(Api::V1::Sharing::FoldersController).to receive(:doorkeeper_token) {token}
