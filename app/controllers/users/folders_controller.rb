@@ -14,18 +14,9 @@ class Users::FoldersController < Users::BaseController
     respond_to do |format|
       format.html
       format.zip do
-        compressed_filestream = Zip::OutputStream.write_buffer(::StringIO.new('')) do |zos|
-          @current_folder.children.each do |contents|
-            if contents.class == Folder
-              zos.put_next_entry "#{contents.name}-#{contents.id}"
-            else
-              zos.put_next_entry "#{contents.name}-#{contents.id}#{contents.extension}"
-            end
-            zos.print contents
-          end
-        end
+        compressed_filestream = ZipFilesService.download_zip_files(@current_folder)
         compressed_filestream.rewind
-        send_data compressed_filestream.read, filename: "folders.zip"
+        send_data compressed_filestream.read, filename: "grab-bag-#{@current_folder.name}.zip"
       end
     end
   end
