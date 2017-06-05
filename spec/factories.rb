@@ -47,7 +47,7 @@ FactoryGirl.define do
       after(:create) do |user|
         user.home.folders << create(:folder, parent: user.home, permission: "root_global")
         2.times do
-          create(:folder, parent: user.owned_folders.second)
+          create(:folder, parent: user.owned_folders.second, permission: 'global')
           create(:binary, folder: user.owned_folders.second)
         end
       end
