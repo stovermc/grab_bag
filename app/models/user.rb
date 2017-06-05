@@ -56,6 +56,11 @@ class User < ApplicationRecord
     # self.owned_folders.update_all(status: "inactive")
   end
 
+  def folder_search(name)
+    where(name: name)
+  end
+
+
 private
   def check_email_format
     return if errors.key?(:email)

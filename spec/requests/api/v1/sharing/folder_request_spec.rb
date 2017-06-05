@@ -3,14 +3,16 @@ require 'rails_helper'
 describe "Users API" do
   it "sends a list of folders" do
     user = create(:user_with_folders)
-    allow_any_instance_of(FoldersController).to receive(:current_user).and_return(user)
+    token = double(Doorkeeper::AccessToken, acceptable?: true)
+    allow_any_instance_of(Api::V1::Sharing::FoldersController).to receive(:doorkeeper_token) {token}
 
-    get '/api/v1/sharing/list_folders'
+
+    get '/api/v1/sharing/folders', {access_token: token}
 
     expect(response).to be_success
 
     folders = JSON.parse(response.body)
-    binding.pry
+    # binding.pry
 
     expect(folders.count).to eq(2)
     expect(folders.first).to have_key("name")
