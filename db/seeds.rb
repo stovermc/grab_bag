@@ -1,7 +1,7 @@
 require 'database_cleaner'
 
 DatabaseCleaner.clean_with(:truncation)
-@total_users = 12
+@total_users = 100
 @public_binaries = []
 
 def add_random_binary(folder)
