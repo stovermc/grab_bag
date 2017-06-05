@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 20170603195812) do
     t.datetime "updated_at",             null: false
     t.integer  "permission", default: 0
     t.string   "slug"
+    t.string   "iv"
     t.integer  "status",     default: 0
     t.index ["folder_id"], name: "index_folders_on_folder_id", using: :btree
     t.index ["slug"], name: "index_folders_on_slug", using: :btree
@@ -125,12 +126,12 @@ ActiveRecord::Schema.define(version: 20170603195812) do
     t.string   "email"
     t.string   "phone"
     t.string   "token"
-    t.datetime "created_at",                                                                                       null: false
-    t.datetime "updated_at",                                                                                       null: false
+    t.datetime "created_at",                                                                                null: false
+    t.datetime "updated_at",                                                                                null: false
     t.string   "password_digest"
     t.integer  "role",              default: 0
     t.string   "verification_code"
-    t.string   "avatar_url",        default: "https://robohash.org/omnisquiavoluptatem.png?size=300x300&set=set1"
+    t.string   "avatar_url",        default: "https://robohash.org/aaccusamusab.png?size=300x300&set=set1"
   end
 
   add_foreign_key "binaries", "folders"

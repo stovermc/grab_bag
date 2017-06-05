@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe "Users API" do
-  it "sends a list of folders" do
+  xit "sends a list of folders" do
     user = create(:user_with_folders)
     allow_any_instance_of(FoldersController).to receive(:current_user).and_return(user)
 
