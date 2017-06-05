@@ -38,11 +38,11 @@
         <div class="binaries">
           <% @current_folder.binaries.each do |binary|%>
             <tr class="binary">
-              <td> <%=link_to(binary.name, binary.url)%></td>
+              <td> <%=link_to binary.name, binary.url%></td>
               <td> <%=binary.extension%></td>
               <td> <%=binary.updated_at%></td>
               <td></td>
-              <td> <a href='<%= binary.data_url %>' type="button" class="btn btn-primary"> Download </a>  </td>
+              <td> <%= link_to  'Download', new_binary_download_path(binary_id: binary.id), class: "btn btn-primary"%>  </td>
               <td> <%= link_to 'Delete', binary.url, data: {confirm: 'Are you sure?'}, method: :delete, class: 'btn btn-danger' %>  </td>
             </tr>
           <% end %>

@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
-    redirect_to landing_page_path
+    redirect_to root_path
   end
 
   private
@@ -28,7 +28,7 @@ class SessionsController < ApplicationController
       user_exists(user)
     else
       flash[:danger] = 'Invalid Username'
-      redirect_to landing_page_path
+      redirect_to root_path
     end
   end
 
@@ -37,7 +37,7 @@ class SessionsController < ApplicationController
       regular_user_exists(user)
     else
       flash[:danger] = 'Invalid Username'
-      redirect_to landing_page_path
+      redirect_to root_path
     end
   end
 
@@ -50,7 +50,7 @@ class SessionsController < ApplicationController
     else
       flash[:danger] = 'Wrong Password'
 
-      redirect_to landing_page_path
+      redirect_to root_path
     end
   end
 

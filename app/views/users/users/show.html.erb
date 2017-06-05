@@ -1,8 +1,14 @@
-<div class='row'>
-    <div class="user-dashboard">
+<div class="user-dashboard">
+    <br>
+    <div class='row'>
+      <div class='col-md-3'>
+      <%= link_to "Your Folders & Files", "/#{current_user.username}/home", class: "btn btn-default login-button" %>
+      </div>
+    </div><br><br>
+    <div class='row'>
       <div class='col-md-3'>
         <%= image_tag current_user.avatar_url + "?type=large", class: 'profile-pic' %>
-      </div><br><br>
+      </div><br>
       <div class='col-md-9'>
       <h4>Name: <%= current_user.name %></h4>
       <p>Phone Number: <%= current_user.phone %></p>
