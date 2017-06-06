@@ -16,4 +16,9 @@ class Binary < ApplicationRecord
   def url
     folder.url + '/' + name + '.' + extension
   end
+  
+  def self.by_type
+    types = pluck(:extension).uniq
+    types.map {|type| { "File Type" => type, "Total"=> where(extension: type).count}}
+  end
 end
