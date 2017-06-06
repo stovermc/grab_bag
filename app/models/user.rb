@@ -40,7 +40,7 @@ class User < ApplicationRecord
       user.fb_id = auth["uid"]
       user.name = auth["info"]["name"]
       user.email = auth["info"]["email"]
-      user.avatar_url = auth["info"]["image"]
+      user.avatar_url = auth["info"]["image"].insert(4, 's')
       user.token = auth["credentials"]["token"]
     end
 

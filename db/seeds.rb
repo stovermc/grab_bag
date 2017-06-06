@@ -5,10 +5,10 @@ DatabaseCleaner.clean_with(:truncation)
 @public_binaries = []
 
 def add_random_binary(folder)
-  binaries = [Binary.new(name: "Pizza", folder: folder, data_url: "https://s3-us-west-1.amazonaws.com/1701grabbag/uploads/pizza.png", extension: ".png"),
-              Binary.new(name: "Stromboli", folder: folder, data_url: "https://s3-us-west-1.amazonaws.com/1701grabbag/uploads/stromboli.jpg", extension: ".jpg"),
-              Binary.new(name: "Bratwurst", folder: folder, data_url: "https://s3-us-west-1.amazonaws.com/1701grabbag/uploads/recipe_grilled-brat.pdf", extension: ".pdf"),
-              Binary.new(name: "Blackberry Pie is ok", folder: folder, data_url: "https://s3-us-west-1.amazonaws.com/1701grabbag/uploads/blackberry_pie.txt", extension: ".txt")]
+  binaries = [Binary.new(name: "Pizza", folder: folder, data_url: "https://s3-us-west-1.amazonaws.com/1701grabbag/uploads/pizza.png", extension: "png"),
+              Binary.new(name: "Stromboli", folder: folder, data_url: "https://s3-us-west-1.amazonaws.com/1701grabbag/uploads/stromboli.jpg", extension: "jpg"),
+              Binary.new(name: "Bratwurst", folder: folder, data_url: "https://s3-us-west-1.amazonaws.com/1701grabbag/uploads/recipe_grilled-brat.pdf", extension: "pdf"),
+              Binary.new(name: "Blackberry Pie is ok", folder: folder, data_url: "https://s3-us-west-1.amazonaws.com/1701grabbag/uploads/blackberry_pie.txt", extension: "txt")]
   binaries.sample
 end
 

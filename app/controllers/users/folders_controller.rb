@@ -1,3 +1,4 @@
+require 'zip'
 class Users::FoldersController < Users::BaseController
   before_action :folder_authorize, only: [:destroy]
 
@@ -8,6 +9,15 @@ class Users::FoldersController < Users::BaseController
       session[:folder_id] = @current_folder.id
     else
       render :file => "#{Rails.root}/public/404.html",  :status => 404
+    end
+
+    respond_to do |format|
+      format.html
+      format.zip do
+        compressed_filestream = ZipFilesService.download_zip_files(@current_folder)
+        compressed_filestream.rewind
+        send_data compressed_filestream.read, filename: "grab-bag-#{@current_folder.name}.zip"
+      end
     end
   end
 
