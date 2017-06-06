@@ -5,11 +5,14 @@ class BinaryDownload < ApplicationRecord
   def self.by_date
     date_array = group("date(created_at)").count.to_a.sort
     date_array.map.with_index do |pair, i|
-      {date: pair[0], accumulated_downloads: pair[1] + date_array[0...i].inject(0) {|sum,n| n[1] + sum}}
+      {Date: pair[0], "Accumulated Downloads": pair[1] + date_array[0...i].inject(0) {|sum,n| n[1] + sum}}
     end
   end
 
   def self.by_permission
-    
+    personal = joins(binary: :folder).where(folders: { permission: 0 }).count
+    global = count - personal
+
+    [{permission: 'Public Downloads', downloads: global}, {permission: 'Private Downloads', downloads: personal}]
   end
 end

@@ -12,15 +12,55 @@ var loadBinaryDownloadsData = function(){
                   }
                 });
               };
-
 function drawBinaryDownloadsPlot(data) {
 
-  var svg = dimple.newSvg("body", 800, 600);
+  var svg = dimple.newSvg('#binary_downloads_by_date_plot', 1200, 600);
   var chart = new dimple.chart(svg, data);
-  chart.addCategoryAxis("x", "date");
-  chart.addMeasureAxis("y", "accumulated_downloads");
+  chart.addCategoryAxis("x", "Date");
+  chart.addMeasureAxis("y", "Accumulated Downloads");
   chart.addSeries(null, dimple.plot.area);
   chart.draw();
+  svg.append("text")
+   .attr("x", 600)
+   .attr("y", 30)
+   .attr("text-anchor", 'middle')
+   .style("font-size", "30px")
+   .style("font-family", "sans-serif")
+   .style("font-weight", "bold")
+   .text("Accumulated Binary Downloads Per Day");
 }
 
-$('#binary_downloads_plot').append(loadBinaryDownloadsData())
+var loadBinaryDownloadsPubPrivData = function(){
+                $.ajax({
+                  type: 'GET',
+                  contentType: 'application/json; charset=utf-8',
+                  url: '/api/v1/binary_downloads_public_v_private',
+                  dataType: 'json',
+                  success: function(data){
+                    drawBinaryDownloadsPubPrivPlot(data);
+                  },
+                  failure: function(result){
+                    error();
+                  }
+                });
+              };
+function drawBinaryDownloadsPubPrivPlot(data) {
+
+  var svg = dimple.newSvg('#binary_downloads_public_v_private_plot', 590, 400);
+  var chart = new dimple.chart(svg, data);
+  chart.addMeasureAxis("p", "downloads");
+  chart.addSeries('permission', dimple.plot.pie);
+  chart.addLegend(450, 20, 90, 300, "left");
+  chart.draw();
+  svg.append("text")
+   .attr("x", 295)
+   .attr("y", 30)
+   .attr("text-anchor", 'middle')
+   .style("font-size", "30px")
+   .style("font-family", "sans-serif")
+   .style("font-weight", "bold")
+   .text("Public vs Private Binary Downloads");
+}
+
+$('#binary_downloads_by_date_plot').append(loadBinaryDownloadsData())
+$('#binary_downloads_public_v_private_plot').append(loadBinaryDownloadsPubPrivData())
