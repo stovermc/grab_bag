@@ -46,7 +46,7 @@ var loadBinaryDownloadsPubPrivData = function(){
               };
 function drawBinaryDownloadsPubPrivPlot(data) {
 
-  var svg = dimple.newSvg('#binary_downloads_public_v_private_plot', 590, 400);
+  var svg = dimple.newSvg('#binary_downloads_public_v_private_plot', "100%", "100%");
   var chart = new dimple.chart(svg, data);
   chart.addMeasureAxis("p", "downloads");
   chart.addSeries('permission', dimple.plot.pie);
