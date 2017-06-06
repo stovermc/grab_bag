@@ -20,10 +20,15 @@ Rails.application.routes.draw do
   get '/auth/facebook', as: :facebook_login
   get '/auth/facebook/callback', to: "sessions#create", as: :facebook_callback
 
+  get 'dropbox/auth' => 'dropbox#auth'
+  get 'dropbox/auth_callback' => 'dropbox#auth_callback'
+  post 'dropbox/upload_file' => 'dropbox#upload_file'
+
   namespace :admin do
     get '/dashboard', to: 'dashboard#index'
     resources :users, only: [:index, :update]
   end
+
 
   resources :confirmations, only: [:new, :create]
   resources :sessions, only: [:create]
@@ -41,6 +46,7 @@ Rails.application.routes.draw do
   resources :binary_downloads, only: [:new]
 
   namespace :users, path: ":username" do
+
     get '/dashboard', to: 'users#show', as: :dashboard
     get '/dashboard/edit', to: 'users#edit', as: :dashboard_edit
     patch '/dashboard/edit', to: 'users#update', as: :dashboard_patch
