@@ -1,6 +1,7 @@
 @import "bootstrap-sprockets"
 @import "bootstrap"
 @import "bootstrap/theme"
+@import "font-awesome"
 
 // body, headers, buttons
 body
@@ -12,20 +13,20 @@ body
 h1.big
   font-size: 5em
   color: #47525D
-  
+
 h2
   color: #47525D !important
   font-weight: lighter !important
-  
+
 .btn-default
-  background-color: #0070E0 
+  background-color: #0070E0
   background-image: none
   border-style: none
   color: white
   text-shadow: none
   font-weight: lighter
   font-size: 16px
-  
+
 .login-button
   width: 100%
   max-width: 990px
@@ -33,47 +34,61 @@ h2
 
 // navbar
 
-.navbar 
+.navbar
   padding-top: 12px
   padding-bottom: 12px
   padding-left: 20px
   padding-right: 20px
   background-color: white
-  
-.navbar .navbar-nav > li > a 
+
+// .navbar .navbar-nav > li > a
+.nav-link
   text-shadow: none
   color: #b7b7b7
   font-size: 1.5em
   font-weight: bold
   padding-bottom: 11px !important
+
+.nav-link-small
+  text-shadow: none
+  color: #b7b7b7
+  font-size: 1em
+  font-weight: bold
+  padding-bottom: 11px !important
+
+.dropbox-icon
+  padding-right: 0px !important
   
+.dropbox-words
+  padding-left: 5px !important
+
 .navbar .navbar-nav > li > a:hover
   color: #0070E0
-  
+
 .navbar-nav.navbar-center
   position: absolute
   left: 50%
   transform: translatex(-50%)
-  
+
 .navbar-brand
   color: #0070E0 !important
   font-size: 2em !important
   font-weight: bold
-  
-.nav-logo 
+
+.nav-logo
   height: 45px
   vertical-align: middle
-  
+
 // landing page
-  
+
 .form-control
   height: 40px !important
   padding: 10px !important
-  
+
 a.sign-up-link
   font-size: 1.5em
   color: #0070E0
-  
+
 // Public folders index
 
 .folders-index-image
