@@ -1,7 +1,7 @@
 require 'database_cleaner'
 
 DatabaseCleaner.clean_with(:truncation)
-@total_users = 12
+@total_users = 100
 @public_binaries = []
 
 def add_random_binary(folder)
@@ -92,6 +92,6 @@ end
 
 User.last.update(name: 'Gandalf', role:'admin', username: "admin1", avatar_url: "https://thumb.ibb.co/htakav/default_profile.jpg")
 
-20.times do |n|
+100.times do |n|
   download_public_file
 end
