@@ -85,7 +85,20 @@ Comment
 
 Like
  * Related to Binaries and Comments through a polymorphic association
+ 
+ 
+### Internal API Endpoints
 
+#### For Users
+* `grabbag.herokuapp.com/api/v1/users` provides all users; each user is provided with  their id, name, username, email, phone number, date their account was created at and date their account was updated at.
+
+#### For Binaries
+* `grabbag.herokuapp.com/api/v1/binaries_by_type` provides the total number of binaries (files) by the type of extension of the binary ("File Type" and "Total" are provided).
+
+#### For Binary Downloads
+* `grabbag.herokuapp.com/api/v1/binary_downloads` provides all binary downloads; each download is provided with id, binary id, user id, & date/time created at. 
+* `grabbag.herokuapp.com/api/v1/binary_downloads_by_date` provides each date a download was made & the accumulated total of downloads made up until that date ("Date" and "Accumulated Downloads" are provided).
+* `grabbag.herokuapp.com/api/v1/binary_downloads_public_v_private` provides the permission type (Public or Private) & the total number of associated downloads ("permission" and "downloads" are provided).
 
 ### Design
 
