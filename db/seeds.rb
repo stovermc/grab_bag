@@ -92,6 +92,6 @@ end
 
 User.last.update(name: 'Gandalf', role:'admin', username: "admin1", avatar_url: "https://thumb.ibb.co/htakav/default_profile.jpg")
 
-20.times do |n|
+100.times do |n|
   download_public_file
 end
