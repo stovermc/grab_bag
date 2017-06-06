@@ -1,16 +1,15 @@
 <h1>Your Dropbox Account Info</h1>
 <hr>
 <br>
-<!-- <%# if @account_info.profile_photo_url == nil %><br> -->
+<% if @account_info.profile_photo_url == nil %><br>
 <%= image_tag("http://home.bbtel.com/assets/user.png", class: "img-thumbnail", size: '150x150') %>
-<!-- <%# else %>
-<%#= image_tag(@account_info.profile_photo_url)  %><br>
-<%# end %> -->
+<% else %>
+<%= image_tag(@account_info.profile_photo_url)  %><br>
+<% end %>
 
 <h3><%= @account_info.name.display_name  %></h3>
-<h4><%= @account_info.email  %></h4><br>
-<h5>Space allocated on Dropbox: <%= @space_allocated  %><h5>
-<h5>Space used on Dropbox: <%= @space_used  %></h5><br><br>
+<h4><%= @account_info.email  %></h4>
+<h5><%= @space_used  %> GB of <%= @space_allocated %> GB used on Dropbox</h5><br><br>
 
 <h2>Dropbox Home Folder contents:</h2>
 <hr>
