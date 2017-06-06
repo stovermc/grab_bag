@@ -10,11 +10,12 @@ class Api::V1::Sharing::FoldersController < ApplicationController
      render json: folder_contents
   end
 
-    def current_user
-      @current_user = User.find(doorkeeper_token.resource_owner_id)
-    end
 private
-    def input_params
-      params.permit(:id)
-    end
+  def current_user
+    @current_user = User.find(doorkeeper_token.resource_owner_id)
+  end
+
+  def input_params
+    params.permit(:id)
+  end
 end
