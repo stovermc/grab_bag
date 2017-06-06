@@ -46,8 +46,10 @@ class DropboxController < ApplicationController
   end
 
   def redirect_uri
-    "http://localhost:3000/dropbox/auth_callback"
+    if dropbox_auth_callback_path == "http://localhost:3000/dropbox/auth_callback"
+      "http://localhost:3000/dropbox/auth_callback"
+    else
+      "https://grabbag.herokuapp.com/dropbox/auth_callback"
+    end
   end
-
-
 end

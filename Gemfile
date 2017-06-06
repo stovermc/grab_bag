@@ -17,6 +17,12 @@ gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.5'
+gem 'rubyzip'
+# Use Redis adapter to run Action Cable in production
+# gem 'redis', '~> 3.0'
+# Use ActiveModel has_secure_password
+# gem 'bcrypt', '~> 3.1.7'
+
 gem 'figaro'
 gem 'aws-sdk', '~> 2'
 gem 'aws-sdk-rails'

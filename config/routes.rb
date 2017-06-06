@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       resources :binary_downloads, only: [:index]
       resources :binary_downloads_by_date, only: [:index]
       resources :binary_downloads_public_v_private, only: [:index]
+      resources :binaries_by_type, only: [:index]
     end
   end
 
