@@ -25,13 +25,14 @@ class DropboxController < ApplicationController
     broken_name = params[:file_name].split('.')
 
     client.download(params[:path]) do |file_contents|
-      @upload_s3_object = S3_BUCKET.put_object(body: file_contents, key: "uploads/#{SecureRandom.uuid}/#{params[:file_name]}", acl: 'public-read')
-      end
+     @upload_s3_object = S3_BUCKET.put_object(body: file_contents, key: "uploads/#{SecureRandom.uuid}/#{params[:file_name]}", acl: 'public-read')
+     end
     data_url = "https://grabbag1701.s3-us-west-1.amazonaws.com/" + @upload_s3_object.key
     Binary.create(folder: folder, name: broken_name[0], extension: '.'+ broken_name[1], data_url: data_url )
-    redirect_to users_folder_path(current_user.username, route: 'home'), notice: "#{params[:file_name]} uploaded to your GrabBag"
-
+    redirect_to users_folder_path(current_user.username, route: 'home') #, notice: "#{params[:file_name]} uploaded to your GrabBag"
+    flash[:success] = "The file #{params[:file_name]} uploaded to your GrabBag"
   end
+
 
   private
 
