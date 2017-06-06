@@ -6,15 +6,15 @@ class Api::V1::Sharing::FoldersController < ApplicationController
   end
 
   def show
-    binding.pry
-    render json: current_user.folder_search(search_params).children
+     folder_contents = current_user.folder_search(input_params[:id])
+     render json: folder_contents
   end
 
     def current_user
       @current_user = User.find(doorkeeper_token.resource_owner_id)
     end
-
-    def search_params
-      params.permit(:folder_name)
+private
+    def input_params
+      params.permit(:id)
     end
 end
