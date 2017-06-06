@@ -12,8 +12,8 @@ var loadBinaryDownloadsData = function(){
                   }
                 });
               };
+              
 function drawBinaryDownloadsPlot(data) {
-
   var svg = dimple.newSvg('#binary_downloads_by_date_plot', 1200, 600);
   var chart = new dimple.chart(svg, data);
   chart.addCategoryAxis("x", "Date");
@@ -44,8 +44,8 @@ var loadBinaryDownloadsPubPrivData = function(){
                   }
                 });
               };
+              
 function drawBinaryDownloadsPubPrivPlot(data) {
-
   var svg = dimple.newSvg('#binary_downloads_public_v_private_plot', "100%", "100%");
   var chart = new dimple.chart(svg, data);
   chart.addMeasureAxis("p", "downloads");
@@ -62,7 +62,7 @@ function drawBinaryDownloadsPubPrivPlot(data) {
    .text("Public vs Private Binary Downloads");
 }
 
-var loadBinariesByTypeData() = function(){
+var loadBinariesByTypeData = function(){
                 $.ajax({
                   type: 'GET',
                   contentType: 'application/json; charset=utf-8',
@@ -77,23 +77,23 @@ var loadBinariesByTypeData() = function(){
                 });
               };
               
-// function drawBinariesByTypePlot(data) {
-// 
-//   var svg = dimple.newSvg('#binaries_by_type_plot', "100%", "100%");
-//   var chart = new dimple.chart(svg, data);
-//   chart.addMeasureAxis("p", "total");
-//   chart.addSeries('file_type', dimple.plot.pie);
-//   chart.addLegend(450, 20, 90, 300, "left");
-//   chart.draw();
-//   svg.append("text")
-//    .attr("x", 295)
-//    .attr("y", 30)
-//    .attr("text-anchor", 'middle')
-//    .style("font-size", "30px")
-//    .style("font-family", "sans-serif")
-//    .style("font-weight", "bold")
-//    .text("Binaries By File Type");
-// }
+function drawBinariesByTypePlot(data) {
+
+  var svg = dimple.newSvg('#binaries_by_type_plot', "100%", "100%");
+  var chart = new dimple.chart(svg, data);
+  chart.addMeasureAxis("p", "Total");
+  chart.addSeries('File Type', dimple.plot.pie);
+  chart.addLegend(450, 20, 90, 300, "left");
+  chart.draw();
+  svg.append("text")
+   .attr("x", 295)
+   .attr("y", 30)
+   .attr("text-anchor", 'middle')
+   .style("font-size", "30px")
+   .style("font-family", "sans-serif")
+   .style("font-weight", "bold")
+   .text("Binaries By File Type");
+}
 
 $('#binary_downloads_by_date_plot').append(loadBinaryDownloadsData())
 $('#binary_downloads_public_v_private_plot').append(loadBinaryDownloadsPubPrivData())
