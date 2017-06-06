@@ -4,12 +4,14 @@
   </div>
 </div>
 
-  <div class='row'>
+<div class='row'>
+  <div class='col-md-6'>
     <%= link_to "New Folder", users_new_folder_path(@current_folder.owner.username), class: "btn btn-success" %>
     <%= link_to "Upload File", users_new_binary_path(@current_folder.owner.username, @current_folder.route), class: "btn btn-success"%>
     <%= link_to "Share this Folder", users_folder_new_share_path, class: "btn btn-success"%>
     <%= link_to 'Download Folder', users_folder_path(format: :zip), class: "btn btn-success"%>
   </div>
+</div>
 
 <div class='row'>
   <div class='col-md-9'>
