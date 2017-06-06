@@ -4,16 +4,21 @@
 <%= image_tag(@account_info.profile_photo_url) %><br>
 <h3><%= @account_info.name.display_name  %></h3>
 <h4><%= @account_info.email  %></h4><br>
-Space allocated on Dropbox: <%= @space_allocated  %><br>
-Space used on Dropbox: <%= @space_used  %><br><br>
+<h5>Space allocated on Dropbox: <%= @space_allocated  %><h5>
+<h5>Space used on Dropbox: <%= @space_used  %></h5><br><br>
 
 <h2>Dropbox Home Folder contents:</h2>
 <hr>
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-9">
+    <h3>Choose a file to add to your Grab Bag home folder</h3><br>
   <% @home_folder_contents.each do |entry| %>
-  <div class="col-md-6"><h4><%= link_to entry.name  %> <i>(<%= entry.class.to_s.split('::')[2] %>)</i></div>
-  <!-- <%#= link_to "Download", @client.download("/picture.jpg") %></h4></div>  -->
+
+  <div class="col-md-6">
+    <h4>
+    <%= raw glyphicon_type(entry.class.to_s.split('::')[2]) %> &nbsp;<%= link_to entry.name, dropbox_upload_file_path(file_name: entry.name, path: entry.path_display), method: :post  %>
+    </h4>
+    </div>
   <% end  %>
   </div>
 </div>

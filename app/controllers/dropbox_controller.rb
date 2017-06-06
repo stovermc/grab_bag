@@ -9,31 +9,35 @@ class DropboxController < ApplicationController
     auth_bearer = authenticator.get_token(params[:code],
                                       :redirect_uri => redirect_uri)
 
-    token = auth_bearer.token
+    session[:token] = auth_bearer.token
     account_id = auth_bearer.params["account_id"]
-    @client = DropboxApi::Client.new(token)
-    @space_allocated = client.get_space_usage.allocation.allocated
-    @space_used = client.get_space_usage.used
     @account_info = client.get_account(account_id)
 
-    @home_folder_contents = @client.list_folder("").entries
+    @space_allocated = (((client.get_space_usage.allocation.allocated.to_f / 1024) / 1024) / 1000).round(1)
+    @space_used = (((client.get_space_usage.used.to_f / 1024) / 1024) / 1000).round(2)
 
-    # require "pry"; binding.pry
-    # client.download()
-    # At this stage you may want to persist the reusable token we've acquired.
-    # Remember that it's bound to the Dropbox account of your user.
-    # Keep this token, you'll need it to initialize a `DropboxApi::Client` object
+    @home_folder_contents = client.list_folder("").entries
 
-    # If you persist this token, you can use it in subsequent requests or
-    # background jobs to perform calls to Dropbox API such as the following.
   end
 
-  def download(path)
-    client.download(path)
+  def upload_file
+    folder = current_user.owned_folders.first
+    broken_name = params[:file_name].split('.')
+
+    client.download(params[:path]) do |file_contents|
+      @upload_s3_object = S3_BUCKET.put_object(body: file_contents, key: "uploads/#{SecureRandom.uuid}/#{params[:file_name]}", acl: 'public-read')
+      end
+    data_url = "https://grabbag1701.s3-us-west-1.amazonaws.com/" + @upload_s3_object.key
+    Binary.create(folder: folder, name: broken_name[0], extension: '.'+ broken_name[1], data_url: data_url )
+    redirect_to users_folder_path(current_user.username, route: 'home'), notice: "#{params[:file_name]} uploaded to your GrabBag"
+
   end
 
   private
-  attr_reader :client
+
+  def client
+    @client ||= DropboxApi::Client.new(session[:token])
+  end
 
   def authenticator
     DropboxApi::Authenticator.new(ENV['DROPBOX_KEY'], ENV['DROPBOX_SECRET'])

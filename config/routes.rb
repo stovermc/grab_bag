@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
   get 'dropbox/auth' => 'dropbox#auth'
   get 'dropbox/auth_callback' => 'dropbox#auth_callback'
+  post 'dropbox/upload_file' => 'dropbox#upload_file'
 
   namespace :admin do
     get '/dashboard', to: 'dashboard#index'
