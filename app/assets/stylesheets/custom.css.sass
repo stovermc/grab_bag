@@ -58,12 +58,18 @@ h2
 
 .dropbox-icon
   padding-right: 0px !important
-  
+
 .dropbox-words
   padding-left: 5px !important
 
+.dropdown-toggle
+  padding: 0px
+
 .navbar .navbar-nav > li > a:hover
   color: #0070E0
+
+.navbar .navbar-nav > li > a.dropdown-toggle
+  padding: 0px !important
 
 .navbar-nav.navbar-center
   position: absolute
@@ -78,6 +84,22 @@ h2
 .nav-logo
   height: 45px
   vertical-align: middle
+
+summary::-webkit-details-marker
+  display: none
+
+
+summary:after
+  // background
+  float: left
+  height: 20px
+  width: 20px
+  content: " "
+
+
+details[open] summary:after
+  // background:
+
 
 // landing page
 
