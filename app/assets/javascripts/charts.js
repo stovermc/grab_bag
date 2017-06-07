@@ -12,12 +12,12 @@ var loadBinaryDownloadsData = function(){
                   }
                 });
               };
-              
+
 function drawBinaryDownloadsPlot(data) {
   var svg = dimple.newSvg('#binary_downloads_by_date_plot', 1200, 600);
   var chart = new dimple.chart(svg, data);
-  chart.addCategoryAxis("x", "Date");
-  chart.addMeasureAxis("y", "Accumulated Downloads");
+  chart.addTimeAxis("x", "Date", "%Y-%m-%d", "%b %Y");
+  chart.addMeasureAxis("y", "Accumulated Downloads", null, 'Date');
   chart.addSeries(null, dimple.plot.area);
   chart.draw();
   svg.append("text")
@@ -44,7 +44,7 @@ var loadBinaryDownloadsPubPrivData = function(){
                   }
                 });
               };
-              
+
 function drawBinaryDownloadsPubPrivPlot(data) {
   var svg = dimple.newSvg('#binary_downloads_public_v_private_plot', "100%", "100%");
   var chart = new dimple.chart(svg, data);
@@ -76,7 +76,7 @@ var loadBinariesByTypeData = function(){
                   }
                 });
               };
-              
+
 function drawBinariesByTypePlot(data) {
 
   var svg = dimple.newSvg('#binaries_by_type_plot', "100%", "100%");
