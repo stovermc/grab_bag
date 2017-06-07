@@ -2,27 +2,33 @@
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="navbar-collapse collapse">
     <ul class="nav navbar-nav">
+
+
+
       <ul class="nav navbar-nav navbar-left">
+
+        <% if current_user %>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle profile-image" data-toggle="dropdown">
-              <span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span> <b class="caret"></b></a>
+          <a href="#" class="dropdown-toggle nav-link-small" data-toggle="dropdown">
+              <span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span> &nbsp;Folders <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <% if current_user %>
-                  <li><%= link_to "My Folders", root_path, class: 'nav-link' %></li>
-                  <li><%= link_to "Folders Shared with Me", users_shared_folders_path(current_user.username), class: 'nav-link' %></li><br>
-                  <li><%= link_to "Public Folders", public_folders_path, class: 'nav-link' %></li><br>
-                  <% else %>
-                  <li><%= link_to "Public Folders", public_folders_path, class: 'nav-link' %></li><br>
-                  <% end %>
-                </ul>
+                    <li><%= link_to "My Folders", root_path, class: 'nav-link-small' %></li>
+                    <li><%= link_to "Folders Shared with Me", users_shared_folders_path(current_user.username), class: 'nav-link-small' %></li>
+                    <li><%= link_to "Public Folders", public_folders_path, class: 'nav-link-small' %></li>
+        <% else %>
+          <li><%= link_to "Public Folders", public_folders_path, class: 'nav-link' %></li>
+        <% end %>
+              </ul>
           </li>
         </ul>
       </ul>
-      
+
+    <% if current_user %>
       <ul class="nav navbar-nav navbar-left">
         <li> <%= link_to  "", dropbox_auth_path, class: "fa fa-dropbox dropbox-icon" %> </li>
         <li> <%= link_to "Connect to Dropbox", dropbox_auth_path, class: "nav-link-small dropbox-words" %> </li>
       </ul>
+    <% end  %>
 
     <ul class="nav navbar-nav navbar-center">
       <a class="navbar-brand" href='<%= root_path %>'>Grab Bag</a>
