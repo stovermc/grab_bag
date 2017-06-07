@@ -3,8 +3,6 @@
   <div class="navbar-collapse collapse">
     <ul class="nav navbar-nav">
 
-
-
       <ul class="nav navbar-nav navbar-left">
 
         <% if current_user %>
@@ -12,9 +10,9 @@
           <a href="#" class="dropdown-toggle nav-link-small" data-toggle="dropdown">
               <span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span> &nbsp;Folders <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                    <li><%= link_to "My Folders", root_path, class: 'nav-link-small' %></li>
-                    <li><%= link_to "Folders Shared with Me", users_shared_folders_path(current_user.username), class: 'nav-link-small' %></li>
-                    <li><%= link_to "Public Folders", public_folders_path, class: 'nav-link-small' %></li>
+                    <li><%= link_to root_path, class: 'nav-link-small' do %><span class="glyphicon glyphicon-folder-close"></span> My Folders</li> <% end  %>
+                    <li><%= link_to users_shared_folders_path(current_user.username), class: 'nav-link-small' do %><span class="glyphicon glyphicon-folder-close"></span> Folders Shared with Me</li> <% end  %>
+                    <li><%= link_to public_folders_path, class: 'nav-link-small' do %><span class="glyphicon glyphicon-folder-close"></span> Public Folders</li> <% end  %>
         <% else %>
           <li><%= link_to "Public Folders", public_folders_path, class: 'nav-link' %></li>
         <% end %>
@@ -45,6 +43,7 @@
               <ul class="dropdown-menu">
                 <% if current_admin? %>
                 <li> <%= link_to admin_users_path(current_user), class: 'nav-link-small' do %> <span class="glyphicon glyphicon-list"></span> Users Index</li><% end %>
+                <li><%= link_to admin_dashboard_path, class: 'nav-link-small' do %><span class="glyphicon glyphicon-signal"></span> Admin Dashboard</li><% end %></li>
                 <% end %>
                 <% if current_user %>
                 <li><%= link_to users_dashboard_path(current_user.username), class: 'nav-link-small' do %> <span class="glyphicon glyphicon-user"></span> My Profile</li> <% end %>
