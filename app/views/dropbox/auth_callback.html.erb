@@ -1,26 +1,34 @@
 <h1>Your Dropbox Account Info</h1>
 <hr>
 <br>
-<% if @account_info.profile_photo_url == nil %><br>
+<% if @theif.account_info.profile_photo_url == nil %><br>
 <%= image_tag("http://home.bbtel.com/assets/user.png", class: "img-thumbnail", size: '150x150') %>
 <% else %>
-<%= image_tag(@account_info.profile_photo_url)  %><br>
+<%= image_tag(@theif.account_info.profile_photo_url)  %><br>
 <% end %>
 
-<h3><%= @account_info.name.display_name  %></h3>
-<h4><%= @account_info.email  %></h4>
-<h5><%= @space_used  %> GB of <%= @space_allocated %> GB used on Dropbox</h5><br><br>
+<h3><%= @theif.account_info.name.display_name  %></h3>
+<h4><%= @theif.account_info.email  %></h4>
+<h5><%= @theif.space_used  %> GB of <%= @theif.space_allocated %> GB used on Dropbox</h5><br><br>
 
 <h2>Dropbox Home Folder contents:</h2>
 <hr>
 <div class="row">
   <div class="col-md-9">
     <h3>Choose a file to add to your Grab Bag home folder</h3><br>
-    <% @home_folder_contents.each do |entry| %>
+    <% @theif.home_folder_contents.each do |entry| %>
 
     <div class="col-md-6">
       <h4>
-        <%= raw glyphicon_type(entry.class.to_s.split('::')[2]) %> &nbsp;<%= link_to entry.name, dropbox_upload_file_path(file_name: entry.name, path: entry.path_display), method: :post  %>
+        <% if entry.name.include?(".")  %>
+          <%= raw glyphicon_type(entry.class.to_s.split('::')[2]) %> &nbsp;<%= link_to entry.name, dropbox_upload_file_path(file_name: entry.name, path: entry.path_display), method: :post  %>
+        <% else  %>
+          <%= raw glyphicon_type(entry.class.to_s.split('::')[2]) %> &nbsp;<%= link_to entry.name %>
+        <% end %>
+
+
+
+
       </h4>
     </div>
     <% end  %>
