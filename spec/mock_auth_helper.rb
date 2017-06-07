@@ -26,4 +26,5 @@ RSpec.configure do
 
     OmniAuth.config.mock_auth[:facebook] = OmniAuth::AuthHash.new(auth_hash)
   end
+
 end

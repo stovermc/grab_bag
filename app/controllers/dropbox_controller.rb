@@ -13,7 +13,6 @@ class DropboxController < ApplicationController
     account_id = auth_bearer.params["account_id"]
 
     @theif = DropboxTheif.new(client, account_id)
-    require "pry"; binding.pry
   end
 
   def upload_file
