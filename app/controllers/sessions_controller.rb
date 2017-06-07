@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
   def create
     if params[:user] && params[:user][:password]
+      
       regular_user
     else
       facebook_user

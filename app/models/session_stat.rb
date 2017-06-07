@@ -1,0 +1,2 @@
+class SessionStat < ApplicationRecord
+end
