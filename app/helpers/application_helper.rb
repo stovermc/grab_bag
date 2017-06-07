@@ -13,11 +13,11 @@ module ApplicationHelper
   end
 
   def like_button_once
-    if @current_user
-      if @binary.likes.find_by(user_id: @current_user)
-        link_to users_dislike_file_path(id: @binary, binary_name: @binary.name, format: :binary, username: @current_user.name, route: "route")
+    if current_user
+      if @binary.likes.find_by(user_id: current_user)
+        users_dislike_file_path(id: @binary, binary_name: @binary.name, format: :binary, username: current_user.name, route: "route")
       else
-        link_to users_like_file_path(id: @binary, binary_name: @binary.name, format: :binary, username: @current_user.name, route: "route")
+        users_like_file_path(id: @binary, binary_name: @binary.name, format: :binary, username: current_user.name, route: "route")
       end
     else
       link_to root_path
@@ -25,9 +25,9 @@ module ApplicationHelper
   end
 
   def like_button_text
-    if @current_user
-      if @binary.likes.find_by(user_id: @current_user)
-        "Dislike File"
+    if current_user
+      if @binary.likes.find_by(user_id: current_user)
+        "Unlike File"
       else
         "Like File"
       end
@@ -36,8 +36,20 @@ module ApplicationHelper
     end
   end
 
+  def comment_like_text(comment)
+    if current_user
+      if comment.likes.find_by(user_id: current_user.id)
+        "Unlike Comment"
+      else
+        "Like Comment"
+      end
+    else
+      "Must be signed in to like"
+    end
+  end
+
   def like_comment(comment)
-    if comment.likes.find_by(user_id: @current_user)
+    if comment.likes.find_by(user_id: current_user)
       users_dislike_comment_path(@binary.folder.owner.username, @binary.folder.route, @binary.name, comment_id: comment.id)
     else
       users_like_comment_path(@binary.folder.owner.username, @binary.folder.route, @binary.name, comment_id: comment.id)

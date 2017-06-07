@@ -16,7 +16,7 @@ class Users::Folders::Binaries::CommentLikesController < ApplicationController
     if current_user
       @binary = Binary.find_by(name: params[:binary_name])
       @comment = @binary.comments.find_by(id: params[:comment_id])
-      @comment.likes.find_by(user_id: current_user).destroy
+      @comment.likes.find_by(user_id: current_user.id).destroy
       redirect_to(@binary.url)
     end
   end
