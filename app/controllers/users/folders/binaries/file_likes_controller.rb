@@ -1,6 +1,5 @@
 class Users::Folders::Binaries::FileLikesController < ApplicationController
   def create
-    binding.pry
     @binary = Binary.find_by(name: params[:binary_name])
     @user = @binary.folder.owner
     @like = @binary.likes.create(user: @user)
