@@ -75,5 +75,11 @@ RSpec.describe Binary do
 
       expect(binary.url).to eq path
     end
+
+    it 'calculates average_per_folder' do
+      create :user_with_various_binary_types
+
+      expect(Binary.average_per_folder).to eq(4.0)
+    end
   end
 end

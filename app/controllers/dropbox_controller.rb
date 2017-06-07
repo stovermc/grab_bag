@@ -23,15 +23,17 @@ class DropboxController < ApplicationController
   def upload_file
     folder = current_user.owned_folders.first
     broken_name = params[:file_name].split('.')
-
+# require "pry"; binding.pry
     client.download(params[:path]) do |file_contents|
-      @upload_s3_object = S3_BUCKET.put_object(body: file_contents, key: "uploads/#{SecureRandom.uuid}/#{params[:file_name]}", acl: 'public-read')
-      end
-    data_url = "https://grabbag1701.s3-us-west-1.amazonaws.com/" + @upload_s3_object.key
-    Binary.create(folder: folder, name: broken_name[0], extension: '.'+ broken_name[1], data_url: data_url )
-    redirect_to users_folder_path(current_user.username, route: 'home'), notice: "#{params[:file_name]} uploaded to your GrabBag"
+     @upload_s3_object = S3_BUCKET.put_object(body: file_contents, key: "uploads/#{SecureRandom.uuid}/#{params[:file_name]}", acl: 'public-read')
+     end
 
+    data_url = "https://1701grabbag.s3-us-west-1.amazonaws.com/" + @upload_s3_object.key
+    Binary.create(folder: folder, name: broken_name[0], extension: broken_name[1], data_url: data_url )
+    redirect_to users_folder_path(current_user.username, route: 'home')
+    flash[:success] = "The file #{params[:file_name]} uploaded to your GrabBag"
   end
+
 
   private
 
@@ -44,8 +46,10 @@ class DropboxController < ApplicationController
   end
 
   def redirect_uri
-    "http://localhost:3000/dropbox/auth_callback"
+    if dropbox_auth_callback_path == "http://localhost:3000/dropbox/auth_callback"
+      "http://localhost:3000/dropbox/auth_callback"
+    else
+      "https://grabbag.herokuapp.com/dropbox/auth_callback"
+    end
   end
-
-
 end

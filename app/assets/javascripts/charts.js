@@ -12,7 +12,7 @@ var loadBinaryDownloadsData = function(){
                   }
                 });
               };
-              
+
 function drawBinaryDownloadsPlot(data) {
   var svg = dimple.newSvg('#binary_downloads_by_date_plot', "90%", "100%");
   var chart = new dimple.chart(svg, data);
@@ -25,14 +25,16 @@ function drawBinaryDownloadsPlot(data) {
     new dimple.color("#C999CA", "#B189B1", 1) // purple
   ];
   // chart.setBounds(60, 20, 770, 300);
-  var x = chart.addCategoryAxis("x", "Date");
-  var y = chart.addMeasureAxis("y", "Accumulated Downloads");
+  
+  chart.addTimeAxis("x", "Date", "%Y-%m-%d", "%b %Y");
+  var y = chart.addMeasureAxis("y", "Accumulated Downloads", null, 'Date');
   y.showGridlines = false;
   y.fontSize = 12;
   var s = chart.addSeries(null, dimple.plot.area);
   s.interpolation = "cardinal";
-  var lines = chart.addSeries(null, dimple.plot.line);
-  lines.lineWeight = 4;
+  // var lines = chart.addSeries(null, dimple.plot.line);
+  // lines.lineWeight = 3;
+
   chart.draw();
 }
 
@@ -50,7 +52,7 @@ var loadBinaryDownloadsPubPrivData = function(){
                   }
                 });
               };
-              
+
 function drawBinaryDownloadsPubPrivPlot(data) {
   var svg = dimple.newSvg('#binary_downloads_public_v_private_plot', "100%", "100%");
   var chart = new dimple.chart(svg, data);
@@ -83,7 +85,7 @@ var loadBinariesByTypeData = function(){
                   }
                 });
               };
-              
+
 function drawBinariesByTypePlot(data) {
   var svg = dimple.newSvg('#binaries_by_type_plot', "100%", "100%");
   var chart = new dimple.chart(svg, data);
@@ -143,7 +145,7 @@ function drawUsersByMonthPlot(data) {
   var s = chart.addSeries(null, dimple.plot.area);
   s.interpolation = "cardinal";
   var lines = chart.addSeries(null, dimple.plot.line);
-  lines.lineWeight = 4;
+  lines.lineWeight = 3;
   chart.draw();
 
  // svg.append('g')
