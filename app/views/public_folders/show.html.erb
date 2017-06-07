@@ -11,8 +11,9 @@
       <th></th>
       <% @child_folders.each do |folder|%>
         <tr>
-          <td><%= image_tag(folder.owner.avatar_url) %></td>
-            <td> <%= link_to folder.name, public_folder_path(folder) %>
+          <!-- <td><%= image_tag(folder.owner.avatar_url) %></td> -->
+          <td><%= image_tag("good_blue_folder.png", height: 40) %></td>
+          <td> <%= link_to folder.name, public_folder_path(folder) %>
           <td> <%=folder.owner.username%></td>
           <td> <%=folder.updated_at%></td>
           <td> <%=folder.permission%></td>
@@ -21,7 +22,8 @@
       <% end %>
       <% @binaries.each do |binary|%>
         <tr>
-          <td><%= image_tag("https://fakeimg.pl/300/") %></td>
+          <!-- <td><%= image_tag("https://fakeimg.pl/300/") %></td> -->
+          <td><%= image_tag("blue_file.png", height: 50) %></td>
             <td> <%= link_to binary.name, public_folders_binary_path(binary) %>
           <td> <%=binary.folder.owner.username%></td>
           <td> <%=binary.updated_at%></td>
