@@ -8,7 +8,7 @@ class Binary < ApplicationRecord
   belongs_to :folder
   has_many :comments, dependent: :destroy
   has_many :likes, as: :likeable
-  has_many :binary_downloads
+  has_many :binary_downloads, dependent: :nullify
 
   enum status: %w(active inactive)
 

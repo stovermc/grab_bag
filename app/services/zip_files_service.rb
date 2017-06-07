@@ -2,10 +2,16 @@ class ZipFilesService
   def self.download_zip_files(current_folder)
     Zip::OutputStream.write_buffer(::StringIO.new('')) do |zos|
       current_folder.children.each do |contents|
-        files(zos, contents) if contents.class == Binary
-        folders(zos, contents) if contents.class == Folder
+        send(download_path[contents.class], zos, contents)
       end
     end
+  end
+
+  def self.download_path
+    {
+      Binary => :files,
+      Folder => :folders
+    }
   end
 
   def self.files(zos, contents)

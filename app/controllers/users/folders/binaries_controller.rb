@@ -24,7 +24,6 @@ class Users::Folders::BinariesController < Users::BaseController
   def show
     user = User.find_by(username: params[:username])
     folder = user.owned_folders.find_by(route: params[:route])
-
     @binary = Binary.find_by(name: params[:binary_name])
     @comment = Comment.new
 
