@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       namespace :sharing do
         resources :folders, only: [:index, :show]
+        resources :binaries, only: [:index, :show]
       end
       resources :users, only: [:index]
       resources :accumulated_users_by_month, only: [:index]
