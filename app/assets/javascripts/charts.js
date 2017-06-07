@@ -13,7 +13,7 @@ var loadUsersByMonthData = function(){
                   }
                 });
               };
-              
+
 function drawUsersByMonthPlot(data) {
   var svg = dimple.newSvg('#accumulated_users_by_month', "100%", "100%");
   var chart = new dimple.chart(svg, data);
@@ -65,15 +65,15 @@ function drawBinaryDownloadsPlot(data) {
     new dimple.color("#C999CA", "#B189B1", 1) // purple
   ];
   // chart.setBounds(60, 20, 770, 300);
-  
+
   var x = chart.addTimeAxis("x", "Date", "%Y-%m-%d", "%b %Y");
   x.fontSize = 12;
   var y = chart.addMeasureAxis("y", "Number of Downloads", null, 'Date');
   y.showGridlines = false;
   y.fontSize = 12;
-  var lines = chart.addSeries(null, dimple.plot.line);
-  lines.lineWeight = 3;
-  var s = chart.addSeries(null, dimple.plot.area);
+  // var lines = chart.addSeries(null, dimple.plot.line);
+  // lines.lineWeight = 3;
+  var s = chart.addSeries(null, dimple.plot.bubble);
   // s.interpolation = "cardinal";
 
   chart.draw(1500);
@@ -140,7 +140,7 @@ function drawBinariesByTypePlot(data) {
   ];
   chart.addMeasureAxis("p", "Total");
   var s = chart.addSeries('File Type', dimple.plot.pie);
-  var myLegend = chart.addLegend("68%", "15%", "10%", "20%", "left");
+  var myLegend = chart.addLegend("68%", "15%", "10%", "100%", "left");
   myLegend.fontSize = "1.5em";
   chart.draw();
 }

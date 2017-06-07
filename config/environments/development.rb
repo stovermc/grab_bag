@@ -27,7 +27,6 @@ Rails.application.configure do
   else
     config.action_controller.perform_caching = false
 
-    config.cache_store = :null_store
   end
 
   # Don't care if the mailer can't send.
@@ -66,4 +65,5 @@ Rails.application.configure do
     :authentication => :login,
     :enable_starttls_auto => true
   }
+  
 end
