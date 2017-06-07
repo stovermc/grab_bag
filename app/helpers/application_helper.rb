@@ -36,6 +36,14 @@ module ApplicationHelper
     end
   end
 
+  def like_comment(comment)
+    if comment.likes.find_by(user_id: @current_user)
+      users_dislike_comment_path(@binary.folder.owner.username, @binary.folder.route, @binary.name, comment_id: comment.id)
+    else
+      users_like_comment_path(@binary.folder.owner.username, @binary.folder.route, @binary.name, comment_id: comment.id)
+    end
+  end
+
   def glyphicon_type(name_of_class)
     if name_of_class == 'Folder'
     '<span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>'
