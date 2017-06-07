@@ -13,10 +13,26 @@ module ApplicationHelper
   end
 
   def like_button_once(binary, user)
-    if binary.likes.find_by(user_id: user)
-      link_to users_dislike_file_path(binary)
+    if user
+      if binary.likes.find_by(user_id: user)
+        link_to users_dislike_file_path(id: binary, binary_name: binary.name, format: :binary, username: user.name, route: "route")
+      else
+        link_to users_like_file_path(id: binary, binary_name: binary.name, format: :binary, username: user.name, route: "route")
+      end
     else
-      link_to users_like_file_path(binary)
+      link_to root_path
+    end
+  end
+
+  def like_button_text(user)
+    if user
+      if binary.likes.find_by(user_id: user)
+        "Dislike File"
+      else
+        "Like File"
+      end
+    else
+      "Must be signed in to like"
     end
   end
 end
