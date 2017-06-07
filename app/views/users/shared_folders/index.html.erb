@@ -12,7 +12,8 @@
       <th></th>
       <% @folders.each do |folder| %>
       <tr>
-        <td><%= image_tag(folder.owner.avatar_url, class: 'img-thumbnail') %></td>
+        <!-- <td><%= image_tag(folder.owner.avatar_url, class: 'img-thumbnail') %></td> -->
+        <td><%= image_tag("good_blue_folder.png", height: 40) %></td>
         <td><%= link_to folder.name, folder.url %></td>
         <td><%= folder.owner.username %></td>
         <td> <%=folder.updated_at%></td>

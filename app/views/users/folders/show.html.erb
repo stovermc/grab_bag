@@ -15,7 +15,7 @@
 
 <div class='row'>
   <div class='col-md-9'>
-      <h2><%= @current_folder.name %> </h2>
+      <h2><%= image_tag("good_blue_folder.png", height: 40) %>&nbsp;<%= @current_folder.name %> </h2>
       <% unless @current_folder.children.empty? %>
       <div class="folder_contents">
         <table class="table">
