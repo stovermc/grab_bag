@@ -68,7 +68,9 @@ Rails.application.routes.draw do
     get '/*route/:binary_name', to: 'folders/binaries#show', as: :binary, format: true
 
     post '/*route/:binary_name/like', to: 'folders/binaries/file_likes#create', as: :like_file, format: true
+    post '/*route/:binary_name/dislike', to: 'folders/binaries/file_likes#delete', as: :dislike_file, format: true
     post '/*route/:binary_name/like_comment', to: 'folders/binaries/comment_likes#create', as: :like_comment
+    post '/*route/:binary_name/dislike_comment', to: 'folders/binaries/comment_likes#delete', as: :dislike_comment
 
     get '/*route/binary_new', to: 'folders/binaries#new', as: :new_binary
     post '/*route', to: 'folders/binaries#create', as: :binaries, constraints: { parameters: /binary/ }
