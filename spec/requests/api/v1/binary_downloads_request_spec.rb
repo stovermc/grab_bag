@@ -85,9 +85,9 @@ describe "Binary Download API" do
     expect(binary_downloads.first).to have_key("permission")
     expect(binary_downloads.first).to have_key("downloads")
 
-    expect(binary_downloads.first['permission']).to eq("Public Downloads")
+    expect(binary_downloads.first['permission']).to eq("Public")
     expect(binary_downloads.first['downloads']).to eq(3)
-    expect(binary_downloads.second['permission']).to eq("Private Downloads")
+    expect(binary_downloads.second['permission']).to eq("Private")
     expect(binary_downloads.second['downloads']).to eq(2)
   end
 end

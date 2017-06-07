@@ -20,6 +20,6 @@ class BinaryDownload < ApplicationRecord
     personal = joins(binary: :folder).where(folders: { permission: 0 }).count
     global = count - personal
 
-    [{permission: 'Public Downloads', downloads: global}, {permission: 'Private Downloads', downloads: personal}]
+    [{permission: 'Public', downloads: global}, {permission: 'Private', downloads: personal}]
   end
 end

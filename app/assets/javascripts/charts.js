@@ -1,3 +1,43 @@
+
+var loadUsersByMonthData = function(){
+                $.ajax({
+                  type: 'GET',
+                  contentType: 'application/json; charset=utf-8',
+                  url: '/api/v1/accumulated_users_by_month',
+                  dataType: 'json',
+                  success: function(data){
+                    drawUsersByMonthPlot(data);
+                  },
+                  failure: function(result){
+                    error();
+                  }
+                });
+              };
+              
+function drawUsersByMonthPlot(data) {
+  var svg = dimple.newSvg('#accumulated_users_by_month', "100%", "100%");
+  var chart = new dimple.chart(svg, data);
+  chart.defaultColors = [
+    new dimple.color("#4ca4ec", "#007ee5", 1), // blue
+    new dimple.color("#FDC381", "#DDAC75", 1), // orange
+    new dimple.color("#C2E587", "#ABC879", 1), // green
+    new dimple.color("#A4DCD2", "#91C1B8", 1), // turquoise
+    new dimple.color("#FC998E", "#DB897F", 1), // red
+    new dimple.color("#C999CA", "#B189B1", 1) // purple
+  ];
+  // chart.setBounds(60, 20, 800, 300);
+  var x = chart.addCategoryAxis("x", "Month");
+  x.fontSize = 12;
+  var y = chart.addMeasureAxis("y", "Total Number of Users");
+  y.showGridlines = false;
+  y.fontSize = 12;
+  var s = chart.addSeries(null, dimple.plot.area);
+  s.interpolation = "cardinal";
+  var lines = chart.addSeries(null, dimple.plot.line);
+  lines.lineWeight = 3;
+  chart.draw(1500);
+}
+
 var loadBinaryDownloadsData = function(){
                 $.ajax({
                   type: 'GET',
@@ -14,7 +54,7 @@ var loadBinaryDownloadsData = function(){
               };
 
 function drawBinaryDownloadsPlot(data) {
-  var svg = dimple.newSvg('#binary_downloads_by_date_plot', "90%", "100%");
+  var svg = dimple.newSvg('#binary_downloads_by_date_plot', "100%", "100%");
   var chart = new dimple.chart(svg, data);
   chart.defaultColors = [
     new dimple.color("#4ca4ec", "#007ee5", 1), // blue
@@ -26,16 +66,17 @@ function drawBinaryDownloadsPlot(data) {
   ];
   // chart.setBounds(60, 20, 770, 300);
   
-  chart.addTimeAxis("x", "Date", "%Y-%m-%d", "%b %Y");
+  var x = chart.addTimeAxis("x", "Date", "%Y-%m-%d", "%b %Y");
+  x.fontSize = 12;
   var y = chart.addMeasureAxis("y", "Number of Downloads", null, 'Date');
   y.showGridlines = false;
   y.fontSize = 12;
+  var lines = chart.addSeries(null, dimple.plot.line);
+  lines.lineWeight = 3;
   var s = chart.addSeries(null, dimple.plot.area);
-  s.interpolation = "cardinal";
-  // var lines = chart.addSeries(null, dimple.plot.line);
-  // lines.lineWeight = 3;
+  // s.interpolation = "cardinal";
 
-  chart.draw();
+  chart.draw(1500);
 }
 
 var loadBinaryDownloadsPubPrivData = function(){
@@ -66,7 +107,7 @@ function drawBinaryDownloadsPubPrivPlot(data) {
   ];
   chart.addMeasureAxis("p", "downloads");
   chart.addSeries('permission', dimple.plot.pie);
-  myLegend = chart.addLegend("75%", "15%", "10%", "20%", "left");
+  myLegend = chart.addLegend("90%", "2%", "15%", "15%", "right");
   myLegend.fontSize = "1.5em";
   chart.draw();
 }
@@ -99,48 +140,8 @@ function drawBinariesByTypePlot(data) {
   ];
   chart.addMeasureAxis("p", "Total");
   var s = chart.addSeries('File Type', dimple.plot.pie);
-  var myLegend = chart.addLegend("75%", "15%", "10%", "20%", "left");
+  var myLegend = chart.addLegend("68%", "15%", "10%", "20%", "left");
   myLegend.fontSize = "1.5em";
-  chart.draw();
-}
-
-var loadUsersByMonthData = function(){
-                $.ajax({
-                  type: 'GET',
-                  contentType: 'application/json; charset=utf-8',
-                  url: '/api/v1/accumulated_users_by_month',
-                  dataType: 'json',
-                  success: function(data){
-                    drawUsersByMonthPlot(data);
-                  },
-                  failure: function(result){
-                    error();
-                  }
-                });
-              };
-              
-function drawUsersByMonthPlot(data) {
-  var svg = dimple.newSvg('#accumulated_users_by_month', "100%", "100%");
-  var chart = new dimple.chart(svg, data);
-  chart.defaultColors = [
-    new dimple.color("#4ca4ec", "#007ee5", 1), // blue
-    new dimple.color("#FDC381", "#DDAC75", 1), // orange
-    new dimple.color("#C2E587", "#ABC879", 1), // green
-    new dimple.color("#A4DCD2", "#91C1B8", 1), // turquoise
-    new dimple.color("#FC998E", "#DB897F", 1), // red
-    new dimple.color("#C999CA", "#B189B1", 1) // purple
-  ];
-  chart.setBounds(60, 20, 800, 300);
-  var x = chart.addCategoryAxis("x", "Month");
-  x.fontSize = 12;
-  x.title
-  var y = chart.addMeasureAxis("y", "Total Number of Users");
-  y.showGridlines = false;
-  y.fontSize = 12;
-  var s = chart.addSeries(null, dimple.plot.area);
-  s.interpolation = "cardinal";
-  var lines = chart.addSeries(null, dimple.plot.line);
-  lines.lineWeight = 3;
   chart.draw();
 }
 
