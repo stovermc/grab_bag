@@ -17,7 +17,7 @@ class ZipFilesService
   def self.folders(zos, contents)
     if !contents.children.empty?
       contents.children.each do |child|
-        child.class == Binary ? files(zos, child) : folders
+        child.class == Binary ? files(zos, child) : folders(zos, child)
       end
     end
   end
