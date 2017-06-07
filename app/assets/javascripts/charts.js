@@ -17,7 +17,7 @@ function drawBinaryDownloadsPlot(data) {
   var svg = dimple.newSvg('#binary_downloads_by_date_plot', 1200, 600);
   var chart = new dimple.chart(svg, data);
   chart.addCategoryAxis("x", "Date");
-  chart.addMeasureAxis("y", "Accumulated Downloads");
+  chart.addMeasureAxis("y", "Number of Downloads");
   chart.addSeries(null, dimple.plot.area);
   chart.draw();
   svg.append("text")
