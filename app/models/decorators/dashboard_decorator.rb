@@ -25,4 +25,8 @@ class Decorators::DashboardDecorator
       Binary.count
     end
   end
+  
+  def average_session_duration
+    SessionStat.average_duration
+  end
 end

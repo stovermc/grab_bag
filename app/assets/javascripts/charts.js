@@ -19,13 +19,13 @@ function drawUsersByMonthPlot(data) {
   var chart = new dimple.chart(svg, data);
   chart.defaultColors = [
     new dimple.color("#4ca4ec", "#007ee5", 1), // blue
-    new dimple.color("#FDC381", "#DDAC75", 1), // orange
+    new dimple.color("#a48ae6", "#5c2cd2", 1), // purple
+    new dimple.color("#f6db6f", "#f2c926", 1), // yellow
     new dimple.color("#C2E587", "#ABC879", 1), // green
+    new dimple.color("#f6b959", "#f39c12", 1), // orange
     new dimple.color("#A4DCD2", "#91C1B8", 1), // turquoise
-    new dimple.color("#FC998E", "#DB897F", 1), // red
-    new dimple.color("#C999CA", "#B189B1", 1) // purple
+    new dimple.color("#FC998E", "#DB897F", 1) // red
   ];
-  // chart.setBounds(60, 20, 800, 300);
   var x = chart.addCategoryAxis("x", "Month");
   x.fontSize = 12;
   var y = chart.addMeasureAxis("y", "Total Number of Users");
@@ -35,6 +35,45 @@ function drawUsersByMonthPlot(data) {
   s.interpolation = "cardinal";
   var lines = chart.addSeries(null, dimple.plot.line);
   lines.lineWeight = 3;
+  chart.draw(1500);
+}
+
+var loadLoginsByWeekdayData = function(){
+                $.ajax({
+                  type: 'GET',
+                  contentType: 'application/json; charset=utf-8',
+                  url: '/api/v1/log_ins_by_weekday',
+                  dataType: 'json',
+                  success: function(data){
+                    drawLoginsByWeekdayPlot(data);
+                  },
+                  failure: function(result){
+                    error();
+                  }
+                });
+              };
+
+function drawLoginsByWeekdayPlot(data) {
+  var svg = dimple.newSvg('#log_ins_by_weekday', "100%", "100%");
+  var chart = new dimple.chart(svg, data);
+  chart.defaultColors = [
+    new dimple.color("#a48ae6", "#5c2cd2", 1), // purple
+    new dimple.color("#f6db6f", "#f2c926", 1), // yellow
+    new dimple.color("#C2E587", "#ABC879", 1), // green
+    new dimple.color("#f6b959", "#f39c12", 1), // orange
+    new dimple.color("#4ca4ec", "#007ee5", 1), // blue
+    new dimple.color("#A4DCD2", "#91C1B8", 1), // turquoise
+    new dimple.color("#FC998E", "#DB897F", 1) // red
+  ];
+  var x = chart.addCategoryAxis("x", "Weekday");
+  x.fontSize = 12;
+  x.addOrderRule(["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"])
+  var y = chart.addMeasureAxis("y", "Number of Logins");
+  y.showGridlines = false;
+  y.fontSize = 12;
+  var s = chart.addSeries("Weekday", dimple.plot.bar);
+  // var lines = chart.addSeries(null, dimple.plot.bar);
+  // lines.lineWeight = 3;
   chart.draw(1500);
 }
 
@@ -58,11 +97,12 @@ function drawBinaryDownloadsPlot(data) {
   var chart = new dimple.chart(svg, data);
   chart.defaultColors = [
     new dimple.color("#4ca4ec", "#007ee5", 1), // blue
-    new dimple.color("#FDC381", "#DDAC75", 1), // orange
+    new dimple.color("#a48ae6", "#5c2cd2", 1), // purple
+    new dimple.color("#f6db6f", "#f2c926", 1), // yellow
     new dimple.color("#C2E587", "#ABC879", 1), // green
+    new dimple.color("#f6b959", "#f39c12", 1), // orange
     new dimple.color("#A4DCD2", "#91C1B8", 1), // turquoise
-    new dimple.color("#FC998E", "#DB897F", 1), // red
-    new dimple.color("#C999CA", "#B189B1", 1) // purple
+    new dimple.color("#FC998E", "#DB897F", 1) // red
   ];
   // chart.setBounds(60, 20, 770, 300);
 
@@ -99,11 +139,12 @@ function drawBinaryDownloadsPubPrivPlot(data) {
   var chart = new dimple.chart(svg, data);
   chart.defaultColors = [
     new dimple.color("#4ca4ec", "#007ee5", 1), // blue
-    new dimple.color("#FDC381", "#DDAC75", 1), // orange
+    new dimple.color("#f6b959", "#f39c12", 1), // orange
+    new dimple.color("#a48ae6", "#5c2cd2", 1), // purple
+    new dimple.color("#f6db6f", "#f2c926", 1), // yellow
     new dimple.color("#C2E587", "#ABC879", 1), // green
     new dimple.color("#A4DCD2", "#91C1B8", 1), // turquoise
-    new dimple.color("#FC998E", "#DB897F", 1), // red
-    new dimple.color("#C999CA", "#B189B1", 1) // purple
+    new dimple.color("#FC998E", "#DB897F", 1) // red
   ];
   chart.addMeasureAxis("p", "downloads");
   chart.addSeries('permission', dimple.plot.pie);
@@ -132,11 +173,12 @@ function drawBinariesByTypePlot(data) {
   var chart = new dimple.chart(svg, data);
   chart.defaultColors = [
     new dimple.color("#4ca4ec", "#007ee5", 1), // blue
-    new dimple.color("#FDC381", "#DDAC75", 1), // orange
+    new dimple.color("#a48ae6", "#5c2cd2", 1), // purple
+    new dimple.color("#f6db6f", "#f2c926", 1), // yellow
     new dimple.color("#C2E587", "#ABC879", 1), // green
+    new dimple.color("#f6b959", "#f39c12", 1), // orange
     new dimple.color("#A4DCD2", "#91C1B8", 1), // turquoise
-    new dimple.color("#FC998E", "#DB897F", 1), // red
-    new dimple.color("#C999CA", "#B189B1", 1) // purple
+    new dimple.color("#FC998E", "#DB897F", 1) // red
   ];
   chart.addMeasureAxis("p", "Total");
   var s = chart.addSeries('File Type', dimple.plot.pie);
@@ -149,3 +191,4 @@ $('#binary_downloads_by_date_plot').append(loadBinaryDownloadsData())
 $('#binary_downloads_public_v_private_plot').append(loadBinaryDownloadsPubPrivData())
 $('#binaries_by_type_plot').append(loadBinariesByTypeData())
 $('#accumulated_users_by_month').append(loadUsersByMonthData())
+$('#log_ins_by_weekday').append(loadLoginsByWeekdayData())
