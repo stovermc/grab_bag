@@ -76,6 +76,6 @@ private
   end
 
   def parent
-    @current_folder.parent
+    @current_folder.parent if @current_folder
   end
 end
