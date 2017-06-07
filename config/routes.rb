@@ -10,6 +10,7 @@ Rails.application.routes.draw do
         resources :folders, only: [:index, :show]
       end
       resources :users, only: [:index]
+      resources :accumulated_users_by_month, only: [:index]
       resources :binary_downloads, only: [:index]
       resources :binary_downloads_by_date, only: [:index]
       resources :binary_downloads_public_v_private, only: [:index]

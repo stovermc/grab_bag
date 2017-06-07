@@ -56,6 +56,10 @@ class User < ApplicationRecord
     # self.owned_folders.update_all(status: "inactive")
   end
 
+  def folder_search(slug)
+    owned_folders.find_by(slug: slug).children
+  end
+
 private
   def check_email_format
     return if errors.key?(:email)
@@ -74,6 +78,13 @@ private
 
   def make_home
     owned_folders.new(name: 'home', route: 'home', slug: 'home').save(validate: false)
+  end
+  
+  def self.accumulated_by_month
+    users_by_month = group("DATE_TRUNC('month', created_at)").count.to_a.sort
+    users_by_month.map.with_index do |pair, i|
+      {Month: (pair[0]).to_date.strftime("%b %Y"), "Total Number of Users": pair[1] + users_by_month[0...i].inject(0) {|sum,n| n[1] + sum}}
+    end
   end
 
 end

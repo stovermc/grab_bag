@@ -17,13 +17,11 @@ class DropboxController < ApplicationController
     @space_used = (((client.get_space_usage.used.to_f / 1024) / 1024) / 1000).round(2)
 
     @home_folder_contents = client.list_folder("").entries
-
   end
 
   def upload_file
     folder = current_user.owned_folders.first
     broken_name = params[:file_name].split('.')
-# require "pry"; binding.pry
     client.download(params[:path]) do |file_contents|
      @upload_s3_object = S3_BUCKET.put_object(body: file_contents, key: "uploads/#{SecureRandom.uuid}/#{params[:file_name]}", acl: 'public-read')
      end
@@ -46,7 +44,8 @@ class DropboxController < ApplicationController
   end
 
   def redirect_uri
-    if dropbox_auth_callback_path == "http://localhost:3000/dropbox/auth_callback"
+    if Rails.env == 'development'
+      # dropbox_auth_callback_path == "http://localhost:3000/dropbox/auth_callback"
       "http://localhost:3000/dropbox/auth_callback"
     else
       "https://grabbag.herokuapp.com/dropbox/auth_callback"

@@ -23,4 +23,8 @@ class Binary < ApplicationRecord
     types.map {|type| { "File Type" => type, "Total"=> where(extension: type).count}}
   end
 
+  def self.average_per_folder
+    (count.to_f / Folder.count.to_f).round(3)
+  end
+
 end
