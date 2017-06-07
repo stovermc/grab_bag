@@ -2,24 +2,28 @@
   <h1 id='analytics'>Analytics</h1>
   <br>
   <br>
-  <h1 class='charts-header'>Totals</h2>
-  <hr>
+  <!-- <h1 class='charts-header'>Totals</h2>
+  <hr> -->
   <div class="flex-container dashboard">
     <div class="well show-box charts-box">
-      <h3>Total Users:</h3>
-      <h2><%= @decorator.user_count %></h2>
+      <h4>Total Users:</h4>
+      <h2 class="counts"><%= @decorator.user_count %></h2>
     </div>
     <div class="well show-box charts-box">
-      <h3>Total Folders:</h3>
-      <h2><%= @decorator.folder_count %></h2>
+      <h4>Total Folders:</h4>
+      <h2 class="counts"><%= @decorator.folder_count %></h2>
     </div>
     <div class="well show-box charts-box">
-      <h3>Total Binaries:</h3>
-      <h2><%= @decorator.binary_count %></h2>
+      <h4>Total Binaries:</h4>
+      <h2 class="counts"><%= @decorator.binary_count %></h2>
     </div>
     <div class="well show-box charts-box">
-      <h3>Average Binaries Per Folder:</h3>
-      <h2><%= @decorator.average_binaries_per_folder %></h2>
+      <h4>Average Binaries Per Folder:</h4>
+      <h2 class="counts"><%= @decorator.average_binaries_per_folder %></h2>
+    </div>
+    <div class="well show-box charts-box">
+      <h4>Average User Session:</h4>
+      <h2 class="counts"><%= @decorator.average_session_duration %> Hours</h2>
     </div>
   </div>
   
@@ -30,6 +34,17 @@
       <h2 class="charts-header">Accumulated Users By Month</h2>
       <div class="charts" style='height: 100%' id="accumulated_users_by_month"></div>
     </div>
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <div class='row'>
+    <div class='col-md-12' style='height: 400px'>
+      <h2 class="charts-header">Logins By Weekday</h2>
+      <div class="charts" style='height: 100%' id="log_ins_by_weekday"></div>
+    </div>
+  </div>
   </div>
   
   <br>

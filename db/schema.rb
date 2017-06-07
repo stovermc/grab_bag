@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170607185903) do
+ActiveRecord::Schema.define(version: 20170607204558) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -110,10 +110,10 @@ ActiveRecord::Schema.define(version: 20170607185903) do
   end
 
   create_table "session_stats", force: :cascade do |t|
-    t.datetime "log_in_time"
     t.float    "duration"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "log_in_day"
   end
 
   create_table "shared_folders", force: :cascade do |t|

@@ -95,3 +95,9 @@ User.last.update(name: 'Gandalf', role:'admin', username: "admin1", avatar_url: 
 100.times do |n|
   download_public_file
 end
+
+50.times do |n|
+  weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+  durations = (500..50000)
+  SessionStat.create(log_in_day: weekdays.sample, duration: rand(durations))
+end

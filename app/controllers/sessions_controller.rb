@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
   def create
     if params[:user] && params[:user][:password]
-      
+      SessionStat.create(log_in_day: Time.now.strftime("%A"))
       regular_user
     else
       facebook_user
@@ -10,6 +10,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
+    SessionStat.last.update(duration: (SessionStat.last.created_at - Time.now) * 60)
     redirect_to root_path
   end
 
