@@ -28,6 +28,7 @@ class User < ApplicationRecord
   has_many :owned_folders, class_name: "Folder", foreign_key: "user_id"
   has_many :comments
   has_many :binary_downloads
+  has_many :binaries, through: :owned_folders
 
   after_create :make_home
 
@@ -43,8 +44,8 @@ class User < ApplicationRecord
       user.avatar_url = auth["info"]["image"].insert(4, 's')
       user.token = auth["credentials"]["token"]
     end
-
   end
+
   def disable
     self.owned_folders.update_all(status: "inactive")
     self.update(status: "inactive")
@@ -54,6 +55,10 @@ class User < ApplicationRecord
     Folder.unscoped.where(user_id: self.id).update_all(status: "active")
     self.update(status: "active")
     # self.owned_folders.update_all(status: "inactive")
+  end
+
+  def folder_search(slug)
+    owned_folders.find_by(slug: slug).children
   end
 
 private
@@ -75,7 +80,7 @@ private
   def make_home
     owned_folders.new(name: 'home', route: 'home', slug: 'home').save(validate: false)
   end
-  
+
   def self.accumulated_by_month
     users_by_month = group("DATE_TRUNC('month', created_at)").count.to_a.sort
     users_by_month.map.with_index do |pair, i|
