@@ -1,7 +1,7 @@
 class Admin::DashboardController < Admin::BaseController
-  
+
   def index
-    #code
+    @decorator = Decorators::DashboardDecorator.new
   end
-  
+
 end
