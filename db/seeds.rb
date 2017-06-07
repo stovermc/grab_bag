@@ -1,14 +1,14 @@
 require 'database_cleaner'
 
 DatabaseCleaner.clean_with(:truncation)
-@total_users = 12
+@total_users = 100
 @public_binaries = []
 
 def add_random_binary(folder)
-  binaries = [Binary.new(name: "Pizza", folder: folder, data_url: "https://s3-us-west-1.amazonaws.com/1701grabbag/uploads/pizza.png", extension: ".png"),
-              Binary.new(name: "Stromboli", folder: folder, data_url: "https://s3-us-west-1.amazonaws.com/1701grabbag/uploads/stromboli.jpg", extension: ".jpg"),
-              Binary.new(name: "Bratwurst", folder: folder, data_url: "https://s3-us-west-1.amazonaws.com/1701grabbag/uploads/recipe_grilled-brat.pdf", extension: ".pdf"),
-              Binary.new(name: "Blackberry Pie is ok", folder: folder, data_url: "https://s3-us-west-1.amazonaws.com/1701grabbag/uploads/blackberry_pie.txt", extension: ".txt")]
+  binaries = [Binary.new(name: "Pizza", folder: folder, data_url: "https://s3-us-west-1.amazonaws.com/1701grabbag/uploads/pizza.png", extension: "png"),
+              Binary.new(name: "Stromboli", folder: folder, data_url: "https://s3-us-west-1.amazonaws.com/1701grabbag/uploads/stromboli.jpg", extension: "jpg"),
+              Binary.new(name: "Bratwurst", folder: folder, data_url: "https://s3-us-west-1.amazonaws.com/1701grabbag/uploads/recipe_grilled-brat.pdf", extension: "pdf"),
+              Binary.new(name: "Blackberry Pie is ok", folder: folder, data_url: "https://s3-us-west-1.amazonaws.com/1701grabbag/uploads/blackberry_pie.txt", extension: "txt")]
   binaries.sample
 end
 
@@ -92,6 +92,6 @@ end
 
 User.last.update(name: 'Gandalf', role:'admin', username: "admin1", avatar_url: "https://thumb.ibb.co/htakav/default_profile.jpg")
 
-20.times do |n|
+100.times do |n|
   download_public_file
 end

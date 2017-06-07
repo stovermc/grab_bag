@@ -1,6 +1,7 @@
 @import "bootstrap-sprockets"
 @import "bootstrap"
 @import "bootstrap/theme"
+@import "font-awesome"
 
 // body, headers, buttons
 body
@@ -13,19 +14,22 @@ h1.big
   font-size: 5em
   color: #47525D
   
+h1.charts-header
+  text-align: center
+
 h2
   color: #47525D !important
   font-weight: lighter !important
-  
+
 .btn-default
-  background-color: #0070E0 
+  background-color: #007EE5
   background-image: none
   border-style: none
   color: white
   text-shadow: none
   font-weight: lighter
   font-size: 16px
-  
+
 .login-button
   width: 100%
   max-width: 990px
@@ -33,47 +37,61 @@ h2
 
 // navbar
 
-.navbar 
+.navbar
   padding-top: 12px
   padding-bottom: 12px
   padding-left: 20px
   padding-right: 20px
   background-color: white
-  
-.navbar .navbar-nav > li > a 
+
+
+.nav-link
   text-shadow: none
   color: #b7b7b7
   font-size: 1.5em
   font-weight: bold
   padding-bottom: 11px !important
-  
+
+.nav-link-small
+  text-shadow: none
+  color: #b7b7b7
+  font-size: 1em
+  font-weight: bold
+  padding-bottom: 11px !important
+
+.dropbox-icon
+  padding-right: 0px !important
+
+.dropbox-words
+  padding-left: 5px !important
+
 .navbar .navbar-nav > li > a:hover
-  color: #0070E0
-  
+  color: #007EE5
+
 .navbar-nav.navbar-center
   position: absolute
   left: 50%
   transform: translatex(-50%)
-  
+
 .navbar-brand
-  color: #0070E0 !important
+  color: #007EE5 !important
   font-size: 2em !important
   font-weight: bold
-  
-.nav-logo 
+
+.nav-logo
   height: 45px
   vertical-align: middle
-  
+
 // landing page
-  
+
 .form-control
   height: 40px !important
   padding: 10px !important
-  
+
 a.sign-up-link
   font-size: 1.5em
-  color: #0070E0
-  
+  color: #007EE5
+
 // Public folders index
 
 .folders-index-image
@@ -96,3 +114,26 @@ a.sign-up-link
   border-radius: 6px
   border-style: solid
   border-width: 3px
+
+.flex-container
+  padding: 20px
+  display: flex
+  flex-wrap: wrap
+  justify-content: space-around
+
+.show-box
+  width: 22%
+  text-align: center
+
+.well
+  background-color: #c6dcff
+  background-image: linear-gradient(to top, #afcde2 0%, #e0ecff 100%)
+
+#analytics
+  text-align: center
+
+
+// charts
+
+.dimple-pie
+  stroke-width: 3px

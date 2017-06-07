@@ -12,21 +12,21 @@ module ApplicationHelper
     end
   end
 
-  def like_button_once(binary, user)
-    if user
-      if binary.likes.find_by(user_id: user)
-        link_to users_dislike_file_path(id: binary, binary_name: binary.name, format: :binary, username: user.name, route: "route")
+  def like_button_once
+    if @current_user
+      if @binary.likes.find_by(user_id: @current_user)
+        link_to users_dislike_file_path(id: @binary, binary_name: @binary.name, format: :binary, username: @current_user.name, route: "route")
       else
-        link_to users_like_file_path(id: binary, binary_name: binary.name, format: :binary, username: user.name, route: "route")
+        link_to users_like_file_path(id: @binary, binary_name: @binary.name, format: :binary, username: @current_user.name, route: "route")
       end
     else
       link_to root_path
     end
   end
 
-  def like_button_text(user)
-    if user
-      if binary.likes.find_by(user_id: user)
+  def like_button_text
+    if @current_user
+      if @binary.likes.find_by(user_id: @current_user)
         "Dislike File"
       else
         "Like File"
@@ -35,4 +35,13 @@ module ApplicationHelper
       "Must be signed in to like"
     end
   end
+
+  def glyphicon_type(name_of_class)
+    if name_of_class == 'Folder'
+    '<span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>'
+    else
+    '<span class="glyphicon glyphicon-file" aria-hidden="true"></span>'
+    end
+  end
+
 end
