@@ -12,7 +12,7 @@ describe Api::V1::Sharing::FoldersController do
       expect(response).to be_success
     end
 
-    it "returns list of user's" do
+    it "returns list of user's folders" do
       get '/api/v1/sharing/folders', params: {access_token: token.token}
       folders = JSON.parse(response.body)
 
@@ -32,7 +32,7 @@ describe Api::V1::Sharing::FoldersController do
     it 'returns contents of a specific folder' do
       get '/api/v1/sharing/folders/home', params: {access_token: token.token}
       contents = JSON.parse(response.body)
-      
+
       expect(contents.count).to eq(6)
       expect(contents.first).to have_key("name")
       expect(contents.first).to have_key("folder_id")
