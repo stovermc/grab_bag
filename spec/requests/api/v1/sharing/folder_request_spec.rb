@@ -1,22 +1,41 @@
 require 'rails_helper'
 
-describe "Users API" do
-  xit "sends a list of folders" do
-    user = create(:user_with_folders)
-    allow_any_instance_of(FoldersController).to receive(:current_user).and_return(user)
+describe Api::V1::Sharing::FoldersController do
+  let!(:application) { create :application }
+  let!(:user)        { create :user_with_folders }
+  let!(:token)       { create :access_token,
+                              :application => application,
+                              :resource_owner_id => user.id }
+  describe 'GET #index' do
+    it 'responds with 200' do
+      get '/api/v1/sharing/folders', params: {access_token: token.token}
+      expect(response).to be_success
+    end
 
-    get '/api/v1/sharing/list_folders'
+    it "returns list of user's folders" do
+      get '/api/v1/sharing/folders', params: {access_token: token.token}
+      folders = JSON.parse(response.body)
 
-    expect(response).to be_success
+      expect(folders.count).to eq(4)
+      expect(folders.first).to have_key("name")
+      expect(folders.first).to have_key("user_id")
+      expect(folders.first).to have_key("folder_id")
+      expect(folders.first).to have_key("route")
+    end
+  end
 
-    folders = JSON.parse(response.body)
-    binding.pry
+  describe "GET #show" do
+    it 'responds with 200' do
+      get '/api/v1/sharing/folders/home', params: {access_token: token.token}
+      expect(response).to be_success
+    end
+    it 'returns contents of a specific folder' do
+      get '/api/v1/sharing/folders/home', params: {access_token: token.token}
+      contents = JSON.parse(response.body)
 
-    expect(folders.count).to eq(2)
-    expect(folders.first).to have_key("name")
-    expect(folders.first).to have_key("username")
-    expect(folders.first).to have_key("email")
-    expect(folders.first).to have_key("phone")
-    expect(folders.first).to_not have_key("password")
+      expect(contents.count).to eq(6)
+      expect(contents.first).to have_key("name")
+      expect(contents.first).to have_key("folder_id")
+    end
   end
 end

@@ -7,19 +7,30 @@
 body
   padding-top: 90px
   padding-bottom: 30px
+  padding-left: 30px
+  padding-right: 30px
   background-color: #F6F9FC
   font-family: 'Khula', sans-serif
 
+h1
+  color: #007EE5 !important
+
 h1.big
   font-size: 5em
-  color: #47525D
+  color: #007EE5
 
 h2
-  color: #47525D !important
+  color: #007EE5 !important
   font-weight: lighter !important
+  
+h3
+  color: #6d6d6d !important
+
+h4
+  color: #6d6d6d !important
 
 .btn-default
-  background-color: #0070E0
+  background-color: #007EE5
   background-image: none
   border-style: none
   color: white
@@ -41,7 +52,6 @@ h2
   padding-right: 20px
   background-color: white
 
-
 .nav-link
   text-shadow: none
   color: #b7b7b7
@@ -51,19 +61,31 @@ h2
 
 .nav-link-small
   text-shadow: none
-  color: #b7b7b7
-  font-size: 1em
+  color: #007EE5 !important
+  font-size: 1.5em
   font-weight: bold
+  padding-top: 11px !important
   padding-bottom: 11px !important
 
 .dropbox-icon
   padding-right: 0px !important
-  
+
 .dropbox-words
   padding-left: 5px !important
 
+.dropdown-toggle
+  padding: 0px
+
 .navbar .navbar-nav > li > a:hover
-  color: #0070E0
+  color: #007EE5
+
+.navbar .navbar-nav > li.dropdown
+  padding-top: 10px
+  padding-left: 15px
+  padding-right: 15px
+
+.navbar .navbar-nav > li > a.dropdown-toggle
+  padding: 0px !important
 
 .navbar-nav.navbar-center
   position: absolute
@@ -71,13 +93,22 @@ h2
   transform: translatex(-50%)
 
 .navbar-brand
-  color: #0070E0 !important
-  font-size: 2em !important
+  color: #007EE5 !important
+  font-size: 2.5em !important
   font-weight: bold
 
 .nav-logo
   height: 45px
   vertical-align: middle
+  
+.img-dropdown
+  padding: 0px !important
+  padding-right: 20px !important
+
+.img-circle
+  width: 55px
+  border: 4px solid #007EE5
+
 
 // landing page
 
@@ -87,7 +118,7 @@ h2
 
 a.sign-up-link
   font-size: 1.5em
-  color: #0070E0
+  color: #007EE5
 
 // Public folders index
 
@@ -106,8 +137,84 @@ a.sign-up-link
 
 // show pages
 
+h1.username
+  font-size: 5em
+  color: #007EE5
+  text-align: center
+
+h3.table-label
+  color: #6d6d6d !important
+  font-weight: bold
+  // text-align: center
+
 .profile-pic
   width: 100%
   border-radius: 6px
   border-style: solid
   border-width: 3px
+  border-color: #007EE5
+
+.flex-container
+  padding: 20px
+  display: flex
+  flex-wrap: wrap
+  justify-content: space-around
+  
+// charts
+
+.show-box
+  width: 18%
+  text-align: center
+  
+.well
+  background-color: #c6dcff
+  background-image: linear-gradient(to top, #afcde2 0%, #e0ecff 100%)
+    
+#analytics
+  text-align: center
+  font-size: 4em
+  color: #007ee5
+  
+.nav-tabs
+  border-bottom-width: 6px
+  border-bottom-color: #007ee5
+  
+.tabs
+  background-color: #007ee5
+  color: white
+
+.charts-box
+  background-image: none
+  background-color: #4ca4ec
+  border-color: #007ee5
+  border-width: thick
+  color: white
+
+h1.charts-header
+  text-align: center
+  color: #007ee5
+  
+h2.charts-header
+  text-align: center
+  color: #007ee5
+
+h2.counts
+  color: white !important
+  vertical-align: middle
+  
+.charts
+  display: block
+  text-align: center
+  
+.dl-col-1
+  padding-right: 0px !important
+  
+.dl-col-2
+  padding-left: 0px !important
+  
+.dimple-title
+  font-size: 20px !important
+
+.dimple-pie
+  stroke-width: 3px
+

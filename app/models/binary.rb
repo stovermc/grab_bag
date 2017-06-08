@@ -8,7 +8,7 @@ class Binary < ApplicationRecord
   belongs_to :folder
   has_many :comments, dependent: :destroy
   has_many :likes, as: :likeable
-  has_many :binary_downloads
+  has_many :binary_downloads, dependent: :nullify
 
   enum status: %w(active inactive)
 
@@ -19,8 +19,16 @@ class Binary < ApplicationRecord
   end
 
   def self.by_type
-    types = pluck(:extension).uniq
-    types.map {|type| { "File Type" => type, "Total"=> where(extension: type).count}}
+    Rails.cache.fetch("binaries_by_type") do
+      types = pluck(:extension).uniq
+      types.map {|type| { "File Type" => type, "Total"=> where(extension: type).count}}
+    end
+  end
+
+  def self.average_per_folder
+    Rails.cache.fetch("average_binaries_per_folder") do
+      (count.to_f / Folder.count.to_f).round(3)
+    end
   end
 
 end

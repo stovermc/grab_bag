@@ -3,19 +3,20 @@
   <table class="table">
     <div class="folders">
       <th width="75px"></th>
-      <th>Name</th>
-      <th>Owner</th>
-      <th>Date Changed</th>
-      <th>Status</th>
+      <th><h3 class="table-label">Name</h3></th>
+      <th><h3 class="table-label">Owner</h3></th>
+      <th><h3 class="table-label">Date Changed</h3></th>
+      <th><h3 class="table-label">Status</h3></th>
       <th></th>
       <% @folders.each do |folder|%>
         <tr>
-          <td><%= image_tag(folder.owner.avatar_url, class: "folders-index-image") %></td>
-          <td> <%= link_to folder.name, public_folder_path(folder)%></td>
-          <td> <%=folder.owner.username%></td>
-          <td> <%=folder.updated_at%></td>
-          <td> <%=folder.permission%></td>
-          <td> <%= current_admin_folder_delete_button(folder) %></td>
+          <!-- <td><%#= image_tag(folder.owner.avatar_url, class: "folders-index-image") %></td> -->
+          <td><h4><%= image_tag("good_blue_folder.png", height: 40) %></h4></td>
+          <td><h4> <%= link_to folder.name, public_folder_path(folder)%></h4></td>
+          <td><h4> <%=folder.owner.username%></h4></td>
+          <td><h4> <%=folder.updated_at%></h4></td>
+          <td><h4> <%=folder.permission%></h4></td>
+          <td><h4> <%= current_admin_folder_delete_button(folder) %></h4></td>
         </tr>
       <% end %>
       <br>

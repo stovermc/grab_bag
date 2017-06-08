@@ -8,8 +8,11 @@ Rails.application.routes.draw do
     namespace :v1 do
       namespace :sharing do
         resources :folders, only: [:index, :show]
+        resources :binaries, only: [:index, :show]
       end
       resources :users, only: [:index]
+      resources :accumulated_users_by_month, only: [:index]
+      resources :log_ins_by_weekday, only: [:index]
       resources :binary_downloads, only: [:index]
       resources :binary_downloads_by_date, only: [:index]
       resources :binary_downloads_public_v_private, only: [:index]
@@ -66,7 +69,9 @@ Rails.application.routes.draw do
     get '/*route/:binary_name', to: 'folders/binaries#show', as: :binary, format: true
 
     post '/*route/:binary_name/like', to: 'folders/binaries/file_likes#create', as: :like_file, format: true
+    post '/*route/:binary_name/dislike', to: 'folders/binaries/file_likes#delete', as: :dislike_file, format: true
     post '/*route/:binary_name/like_comment', to: 'folders/binaries/comment_likes#create', as: :like_comment
+    post '/*route/:binary_name/dislike_comment', to: 'folders/binaries/comment_likes#delete', as: :dislike_comment
 
     get '/*route/binary_new', to: 'folders/binaries#new', as: :new_binary
     post '/*route', to: 'folders/binaries#create', as: :binaries, constraints: { parameters: /binary/ }
