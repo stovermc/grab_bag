@@ -1,9 +1,7 @@
 <div class="main-container">
-  <h1 id='analytics'>Analytics</h1>
+  <h1 id='analytics'>Data Analytics</h1>
   <br>
   <br>
-  <!-- <h1 class='charts-header'>Totals</h2>
-  <hr> -->
   <div class="flex-container dashboard">
     <div class="well show-box charts-box">
       <h4>Total Users:</h4>
@@ -26,115 +24,74 @@
       <h2 class="counts"><%= @decorator.average_session_duration %> Hours</h2>
     </div>
   </div>
-
-  <div class='row'>
-    <h1 class="charts-header">Users</h1>
-    <hr>
-    <div class='col-md-12' style='height: 400px'>
-      <h2 class="charts-header">Accumulated Users By Month</h2>
-      <div class="charts" style='height: 100%' id="accumulated_users_by_month"></div>
-    </div>
-  </div>
   <br>
   <br>
+  <h1 id='analytics'>Analytics Visuals</h1>
   <br>
   <br>
-  <div class='row'>
-    <div class='col-md-12' style='height: 400px'>
-      <h2 class="charts-header">Logins By Weekday</h2>
-      <div class="charts" style='height: 100%' id="log_ins_by_weekday"></div>
-    </div>
-  </div>
-  </div>
-  <br>
-  <br>
-  <br>
-  <br>
-
-  <div class='row'>
-    <h1 class='charts-header'>File Downloads</h1>
-    <hr>
-    <div class='col-md-9 dl-col-1' style='height: 400px'>
-      <h2 class="charts-header">File Downloads Per Day</h2>
-      <div class="charts" style='height: 100%' id="binary_downloads_by_date_plot"></div>
-    </div>
-
-    <div class='col-md-3 dl-col-2' style='height: 400px'>
-      <h2 class="charts-header">Public vs Private File Downloads</h2>
-      <div class="charts" style='height: 100%' id="binary_downloads_public_v_private_plot"></div>
-    </div>
-  </div>
-
-  <br>
-  <br>
-  <br>
-  <br>
-
-  <div class='row'>
-    <h1 class="charts-header">Files</h1>
-    <hr>
-    <div class='col-md-12' style='height: 400px'>
-      <h2 class="charts-header">Files By Type</h2>
-      <div class="charts" style='height: 100%' id="binaries_by_type_plot"></div>
-    </div>
-  </div>
-
-  <!-- <div class="row"> -->
+  <div class="row">
   <!-- begin tabbed section -->
-  <!-- <div class="card col-md-12" id="toggle">
-    <div class="card_header">
+  <div class="card col-md-12" id="toggle">
+    <div class="card_header tabbable">
       <ul class = "nav nav-tabs card-header-tabs">
         <li class="nav-item">
-          <a class="nav-link active" data-toggle="tab" href="#users">Users</a>
+          <a class="nav-link active tabs" id="users-tab" data-toggle="tab" href="#users"><span class="glyphicon glyphicon-user"></span> Users</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" data-toggle="tab" href="#files">Files</a>
+          <a class="nav-link tabs" id="files-tab" data-toggle="tab" href="#files"><span class="glyphicon glyphicon-file"></span> Files</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" data-toggle="tab" href="#file_downloads">File Downloads</a>
+          <a class="nav-link tabs" id="file_downloads-tab" data-toggle="tab" href="#file_downloads"><span class="glyphicon glyphicon-download"></span> File Downloads</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link tabs" id="logins-tab" data-toggle="tab" href="#logins"><span class="glyphicon glyphicon-log-in"></span> Logins</a>
         </li>
       </ul>
 
       <div class="tab-content">
         <div class="tab-pane active" id="users" role="tabpanel">
-          <%#= render partial: 'admin_header' %>
-          <hr>
           <div class='row'>
-            <div class='col-md-12' style='height: 400px'>
-              <h1 class="charts-header">Accumulated Users By Month</h1>
+            <div class='col-md-12' style='height: 500px'>
+              <h2 class="charts-header">Accumulated Users By Month</h2>
               <div class="charts" style='height: 100%' id="accumulated_users_by_month"></div>
             </div>
           </div>
         </div>
 
         <div class="tab-pane" id="files" role="tabpanel">
-          <%#= render partial: 'admin_header' %>
-          <hr>
           <div class='row'>
-            <div class='col-md-12' style='height: 400px'>
-              <h1 class="charts-header">Files By Type</h1>
+            <div class='col-md-12' style='height: 500px'>
+              <h2 class="charts-header">Files By Type</h2>
               <div class="charts" style='height: 100%' id="binaries_by_type_plot"></div>
             </div>
           </div>
         </div>
 
         <div class="tab-pane" id="file_downloads" role="tabpanel">
-          <%#= render partial: 'admin_header' %>
-          <hr>
           <div class='row'>
-            <div class='col-md-8' style='height: 400px'>
-              <h1 class="charts-header">File Downloads Per Day</h1>
+            <div class='col-md-9' style='height: 500px'>
+              <h2 class="charts-header">File Downloads Per Day</h2>
               <div class="charts" style='height: 100%' id="binary_downloads_by_date_plot"></div>
             </div>
 
-            <div class='col-md-4' style='height: 400px'>
-              <h1 class="charts-header">Public vs Private File Downloads</h1>
+            <div class='col-md-3' style='height: 500px'>
+              <h2 class="charts-header">Public vs Private File Downloads</h2>
               <div class="charts" style='height: 100%' id="binary_downloads_public_v_private_plot"></div>
             </div>
           </div>
         </div>
+
+        <div class="tab-pane" id="logins" role="tabpanel">
+          <div class='row'>
+            <div class='col-md-12' style='height: 500px'>
+              <h2 class="charts-header">Logins By Weekday</h2>
+              <div class="charts" style='height: 100%' id="log_ins_by_weekday"></div>
+            </div>
+          </div>
+        </div>
+
+
       </div>
     </div>
-  </div> -->
-
+  </div>
 </div>

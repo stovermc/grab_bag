@@ -187,8 +187,23 @@ function drawBinariesByTypePlot(data) {
   chart.draw();
 }
 
-$('#binary_downloads_by_date_plot').append(loadBinaryDownloadsData())
-$('#binary_downloads_public_v_private_plot').append(loadBinaryDownloadsPubPrivData())
-$('#binaries_by_type_plot').append(loadBinariesByTypeData())
-$('#accumulated_users_by_month').append(loadUsersByMonthData())
-$('#log_ins_by_weekday').append(loadLoginsByWeekdayData())
+$('#accumulated_users_by_month').load(loadUsersByMonthData())
+
+$('#users-tab').on('click', function() {
+  $('#accumulated_users_by_month').empty()
+  $('#accumulated_users_by_month').load(loadUsersByMonthData())
+})
+$('#file_downloads-tab').on('click', function() {
+  $('#binary_downloads_public_v_private_plot').empty()
+  $('#binary_downloads_by_date_plot').empty()
+  $('#binary_downloads_public_v_private_plot').load(loadBinaryDownloadsPubPrivData())
+  $('#binary_downloads_by_date_plot').load(loadBinaryDownloadsData())
+})
+$('#files-tab').on('click', function() {
+  $('#binaries_by_type_plot').empty()
+  $('#binaries_by_type_plot').load(loadBinariesByTypeData())
+})
+$('#logins-tab').on('click', function() {
+  $('#log_ins_by_weekday').empty()
+  $('#log_ins_by_weekday').load(loadLoginsByWeekdayData())
+})
