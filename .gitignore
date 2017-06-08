@@ -15,7 +15,7 @@
 
 # Ignore Byebug command history file.
 .byebug_history
-
+db/schema.rb
 
 # Ignore application configuration
 /config/application.yml

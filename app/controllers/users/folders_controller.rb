@@ -3,7 +3,8 @@ class Users::FoldersController < Users::BaseController
   before_action :folder_authorize, only: [:destroy]
 
   def show
-    user = User.find_by(username: params[:username])
+    add_breadcrumb "Back", parent.url if parent
+    User.find_by(username: params[:username])
 
     if @current_folder = current_folder
       session[:folder_id] = @current_folder.id
@@ -72,5 +73,9 @@ private
       redirect_back(fallback_location: folders_path)
        flash[:warning] = "Sorry, you don't have perimission to delete #{folder.name}!"
     end
+  end
+
+  def parent
+    @current_folder.parent if @current_folder
   end
 end
