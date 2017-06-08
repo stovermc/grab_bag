@@ -2,6 +2,7 @@ RSpec.configure do |config|
   config.before(:suite) do
     begin
       DatabaseCleaner.start
+      Rails.cache.clear
     ensure
       DatabaseCleaner.clean_with(:truncation)
     end
