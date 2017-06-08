@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170603195812) do
+ActiveRecord::Schema.define(version: 20170607204558) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 20170603195812) do
     t.datetime "updated_at",             null: false
     t.integer  "permission", default: 0
     t.string   "slug"
+    t.string   "iv"
     t.integer  "status",     default: 0
     t.index ["folder_id"], name: "index_folders_on_folder_id", using: :btree
     t.index ["slug"], name: "index_folders_on_slug", using: :btree
@@ -108,6 +109,13 @@ ActiveRecord::Schema.define(version: 20170603195812) do
     t.index ["uid"], name: "index_oauth_applications_on_uid", unique: true, using: :btree
   end
 
+  create_table "session_stats", force: :cascade do |t|
+    t.float    "duration"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "log_in_day"
+  end
+
   create_table "shared_folders", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "folder_id"
@@ -125,12 +133,12 @@ ActiveRecord::Schema.define(version: 20170603195812) do
     t.string   "email"
     t.string   "phone"
     t.string   "token"
-    t.datetime "created_at",                                                                                   null: false
-    t.datetime "updated_at",                                                                                   null: false
+    t.datetime "created_at",                                                                                null: false
+    t.datetime "updated_at",                                                                                null: false
     t.string   "password_digest"
     t.integer  "role",              default: 0
     t.string   "verification_code"
-    t.string   "avatar_url",        default: "https://robohash.org/autsintsuscipit.png?size=300x300&set=set1"
+    t.string   "avatar_url",        default: "https://robohash.org/aaccusamusab.png?size=300x300&set=set1"
   end
 
   add_foreign_key "binaries", "folders"
