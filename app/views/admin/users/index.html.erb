@@ -1,12 +1,12 @@
     <table class="table">
       <thead>
       <th></th>
-      <th>Username</th>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Phone</th>
-      <th>Status</th>
-      <th>Role</th>
+      <th><h3 class="table-label">Username</h3></th>
+      <th><h3 class="table-label">Name</h3></th>
+      <th><h3 class="table-label">Email</h3></th>
+      <th><h3 class="table-label">Phone</h3></th>
+      <th><h3 class="table-label">Status</h3></th>
+      <th><h3 class="table-label">Role</h3></th>
       <th></th>
     </thead>
     <tbody>
@@ -15,14 +15,14 @@
     <div class="<%=user.username%>">
       <tr>
       <td> <img src=" <%=user.avatar_url%>" class="img-thumbnail" width="60px" alt="User's Profile"></td>
-      <td><%=link_to user.username, users_folder_path(user.username, route: "home") %></td>
-      <td><%=user.name%></td>
-      <td><%=user.email%></td>
-      <td><%=user.phone%></td>
-      <td><%=user.status%></td>
-      <td><%=user.role%></td>
-      <td><%=change_status_button(user)%></td>
-      <td><%=change_role_button(user)%></td>
+      <td><h4><%=link_to user.username, users_folder_path(user.username, route: "home") %></h4></td>
+      <td><h4><%=user.name%></h4></td>
+      <td><h4><%=user.email%></h4></td>
+      <td><h4><%=user.phone%></h4></td>
+      <td><h4><%=user.status%></h4></td>
+      <td><h4><%=user.role%></h4></td>
+      <td><h4><%=change_status_button(user)%></h4></td>
+      <td><h4><%=change_role_button(user)%></h4></td>
       </tr>
     </div>
     <% end %>

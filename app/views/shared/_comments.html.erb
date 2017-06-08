@@ -1,11 +1,11 @@
 <div class="form-group", style="width:50%;">
   <%= form_for [:users, @binary, @comment] do |f| %>
   <div class="form-group">
-    <%= f.label :text, "Comment" %>
+    <h4><%= f.label :text, "Comment" %></h4>
     <%= f.text_field :text, class: "form-control" %>
   </div>
 
-  <%= f.submit "Post Comment" %>
+  <%= f.submit "Post Comment", class: "btn btn-default" %>
   <% end %>
 
 </div>
