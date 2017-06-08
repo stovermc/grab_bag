@@ -11,10 +11,9 @@ RSpec.feature "Admin can see analytics dashboard" do
     scenario "Admin can visit admin_dashboard analytics" do
       create_list(:user, 3)
       create(:user, created_at: Date.yesterday)
-      
+      SessionStat.create(log_in_day: "Wednesday", duration: 5000)
       visit admin_dashboard_path
       
-      end
     end
     
   end

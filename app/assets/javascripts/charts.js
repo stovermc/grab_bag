@@ -33,8 +33,6 @@ function drawUsersByMonthPlot(data) {
   y.fontSize = 12;
   var s = chart.addSeries(null, dimple.plot.area);
   s.interpolation = "cardinal";
-  var lines = chart.addSeries(null, dimple.plot.line);
-  lines.lineWeight = 3;
   chart.draw(1500);
 }
 
@@ -72,8 +70,6 @@ function drawLoginsByWeekdayPlot(data) {
   y.showGridlines = false;
   y.fontSize = 12;
   var s = chart.addSeries("Weekday", dimple.plot.bar);
-  // var lines = chart.addSeries(null, dimple.plot.bar);
-  // lines.lineWeight = 3;
   chart.draw(1500);
 }
 
@@ -111,10 +107,7 @@ function drawBinaryDownloadsPlot(data) {
   var y = chart.addMeasureAxis("y", "Number of Downloads", null, 'Date');
   y.showGridlines = false;
   y.fontSize = 12;
-  // var lines = chart.addSeries(null, dimple.plot.line);
-  // lines.lineWeight = 3;
   var s = chart.addSeries(null, dimple.plot.bubble);
-  // s.interpolation = "cardinal";
 
   chart.draw(1500);
 }
