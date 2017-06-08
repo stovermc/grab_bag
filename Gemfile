@@ -55,6 +55,7 @@ end
 group :test do
   gem 'capybara'
   gem 'rspec-rails'
+  gem 'rspec-pride'
   gem 'launchy'
   gem 'factory_girl_rails'
   gem 'shoulda-matchers', '~> 3.1'

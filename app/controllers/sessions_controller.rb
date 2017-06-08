@@ -4,13 +4,14 @@ class SessionsController < ApplicationController
       SessionStat.create(log_in_day: Time.now.strftime("%A"))
       regular_user
     else
+      SessionStat.create(log_in_day: Time.now.strftime("%A"))
       facebook_user
     end
   end
 
   def destroy
-    session[:user_id] = nil
     SessionStat.last.update(duration: (SessionStat.last.created_at - Time.now) * 60)
+    session[:user_id] = nil
     redirect_to root_path
   end
 

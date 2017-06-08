@@ -16,10 +16,9 @@
 </<div></div>>
 <% end %>
 <div class="field">
-  <%= f.label :data_url %><br>
   <%= f.file_field :data_url %>
 </div>
 <div class="actions">
-  <%= f.submit "Create File" %>
+  <%= f.submit "Create File", class: "btn btn-default" %>
 </div>
 <% end %>

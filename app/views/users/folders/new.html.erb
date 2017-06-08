@@ -2,15 +2,15 @@
   <%= form_for [:users, @folder] do |f| %>
     <%= f.hidden_field :type, value: 'folder' %>
     <div class="form-group">
-      <%= f.label :name  %>
+      <h3><%= f.label :name  %></h3>
       <%= f.text_field :name, class: "form-control"  %>
     </div>
     <% if @folder.personal? %>
       <div class="form-group">
-        <%= f.label :private %>
+        <h3><%= f.label :private %>
         <%= f.radio_button :permission, "personal", checked: true%>
         <%= f.label :public %>
-        <%= f.radio_button :permission, "root_global" %>
+        <%= f.radio_button :permission, "root_global" %></h3>
       </div>
     <% else %>
       <%= f.hidden_field(:permission, value: 'global') %>
