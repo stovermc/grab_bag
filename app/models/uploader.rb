@@ -16,7 +16,7 @@ class Uploader
 
   def upload_to_s3
     client.download(params[:path]) do |file_contents|
-      @s3_object = S3_BUCKET.put_object(body: file_contents, key: "uploads/#{SecureRandom.uuid}/#{params[:file_name]}", acl: 'public-read')
+      @s3_object = S3_BUCKET.put_object(body: file_contents, key: "uploads/#{SecureRandom.uuid}/#{params[:file_name]}", acl: 'public-read', content_type: "octet/binary")
    end
    @s3_object
   end

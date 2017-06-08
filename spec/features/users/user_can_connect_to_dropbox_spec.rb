@@ -16,9 +16,9 @@ RSpec.feature "User can connect to dropbox" do
 
       # @token = ENV['DROPBOX_TOKEN']
       # @client = DropboxApi::Client.new(@token)
-      # @theif = DropboxTheif.new(@client, "dbid:AADpQYmD5FJPCJzItJQ8i95Cc-99TcvIgbM")
+      # @thief = DropboxThief.new(@client, "dbid:AADpQYmD5FJPCJzItJQ8i95Cc-99TcvIgbM")
       #
-      # allow_any_instance_of(DropboxController).to receive(:auth_callback).and_return(theif)
+      # allow_any_instance_of(DropboxController).to receive(:auth_callback).and_return(thief)
       #
       # @auth_code = OAuth2::Client.new(ENV['DROPBOX_KEY'], ENV['DROPBOX_SECRET'], {
       # :authorize_url => 'https://www.dropbox.com/oauth2/authorize',

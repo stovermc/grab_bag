@@ -1,22 +1,22 @@
 <h1>Your Dropbox Account Info</h1>
 <hr>
 <br>
-<% if @theif.account_info.profile_photo_url == nil %><br>
+<% if @thief.account_info.profile_photo_url == nil %><br>
 <%= image_tag("http://home.bbtel.com/assets/user.png", class: "img-thumbnail", size: '150x150') %>
 <% else %>
-<%= image_tag(@theif.account_info.profile_photo_url)  %><br>
+<%= image_tag(@thief.account_info.profile_photo_url)  %><br>
 <% end %>
 
-<h3><%= @theif.account_info.name.display_name  %></h3>
-<h4><%= @theif.account_info.email  %></h4>
-<h5><%= @theif.space_used  %> GB of <%= @theif.space_allocated %> GB used on Dropbox</h5><br><br>
+<h3><%= @thief.account_info.name.display_name  %></h3>
+<h4><%= @thief.account_info.email  %></h4>
+<h5><%= @thief.space_used  %> GB of <%= @thief.space_allocated %> GB used on Dropbox</h5><br><br>
 
 <h2>Dropbox Home Folder contents:</h2>
 <hr>
 <div class="row">
   <div class="col-md-9">
     <h3>Choose a file to add to your Grab Bag home folder</h3><br>
-    <% @theif.home_folder_contents.each do |entry| %>
+    <% @thief.home_folder_contents.each do |entry| %>
 
     <div class="col-md-6">
       <h4>

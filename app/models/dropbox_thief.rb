@@ -1,4 +1,4 @@
-class DropboxTheif
+class DropboxThief
 
   def initialize(client, account_id)
     @client = client

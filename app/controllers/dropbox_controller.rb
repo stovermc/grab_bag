@@ -12,7 +12,7 @@ class DropboxController < ApplicationController
 
     account_id = auth_bearer.params["account_id"]
 
-    @theif = DropboxTheif.new(client, account_id)
+    @thief = DropboxThief.new(client, account_id)
   end
 
   def upload_file
