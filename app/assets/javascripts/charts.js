@@ -32,9 +32,7 @@ function drawUsersByMonthPlot(data) {
   y.showGridlines = false;
   y.fontSize = 12;
   var s = chart.addSeries(null, dimple.plot.area);
-  s.interpolation = "cardinal";
-  var lines = chart.addSeries(null, dimple.plot.line);
-  lines.lineWeight = 3;
+  // s.interpolation = "cardinal";
   chart.draw(1500);
 }
 
