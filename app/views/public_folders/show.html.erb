@@ -4,31 +4,31 @@
   <table class="table">
     <div class="folders">
       <th width="75px"></th>
-      <th>Name</th>
-      <th>Owner</th>
-      <th>Date Changed</th>
-      <th>Status</th>
+      <th><h3 class="table-label">Name</h3></th>
+      <th><h3 class="table-label">Owner</h3></th>
+      <th><h3 class="table-label">Date Changed</h3></th>
+      <th><h3 class="table-label">Status</h3></th>
       <th></th>
       <% @child_folders.each do |folder|%>
         <tr>
           <!-- <td><%= image_tag(folder.owner.avatar_url) %></td> -->
-          <td><%= image_tag("good_blue_folder.png", height: 40) %></td>
-          <td> <%= link_to folder.name, public_folder_path(folder) %>
-          <td> <%=folder.owner.username%></td>
-          <td> <%=folder.updated_at%></td>
-          <td> <%=folder.permission%></td>
-          <td> <%= current_admin_folder_delete_button(folder) %></td>
+          <td><h4><%= image_tag("good_blue_folder.png", height: 40) %></h4></td>
+          <td><h4><%= link_to folder.name, public_folder_path(folder) %></h4> </td>
+          <td><h4> <%=folder.owner.username%></h4></td>
+          <td><h4> <%=folder.updated_at%></h4></td>
+          <td><h4> <%=folder.permission%></h4></td>
+          <td><h4> <%= current_admin_folder_delete_button(folder) %></h4></td>
         </tr>
       <% end %>
       <% @binaries.each do |binary|%>
         <tr>
           <!-- <td><%= image_tag("https://fakeimg.pl/300/") %></td> -->
-          <td><%= image_tag("blue_file.png", height: 50) %></td>
-            <td> <%= link_to binary.name, public_folders_binary_path(binary) %>
-          <td> <%=binary.folder.owner.username%></td>
-          <td> <%=binary.updated_at%></td>
-          <td> <%=binary.status%></td>
-          <td> <%= current_admin_binary_delete_button(binary) %></td>
+          <td><h4><%= image_tag("blue_file.png", height: 50) %></h4></td>
+          <td><h4> <%= link_to binary.name, public_folders_binary_path(binary) %></h4></td>
+          <td><h4> <%=binary.folder.owner.username%></h4></td>
+          <td><h4> <%=binary.updated_at%></h4></td>
+          <td><h4> <%=binary.status%></h4></td>
+          <td><h4> <%= current_admin_binary_delete_button(binary) %></h4></td>
         </tr>
       <% end %>
 
