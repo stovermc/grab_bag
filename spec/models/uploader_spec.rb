@@ -25,7 +25,7 @@ describe Uploader do
     expect(home_folder.name).to eq('home')
     expect(home_folder.route).to eq('home')
     expect(home_folder.slug).to eq('home')
-    expect(home_folder.user_id).to eq(2)
+    expect(home_folder.user_id).to eq(@user.id)
   end
 
   it "#upload_to_grabbag" do
