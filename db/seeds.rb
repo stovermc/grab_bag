@@ -1,7 +1,7 @@
 require 'database_cleaner'
 
 DatabaseCleaner.clean_with(:truncation)
-@total_users = 100
+@total_users = 300
 @public_binaries = []
 
 def add_random_binary(folder)
@@ -13,24 +13,24 @@ def add_random_binary(folder)
 end
 
 def download_own_file(user, binary)
-  BinaryDownload.create(user: user, binary: binary, created_at: user.created_at + rand(100))
+  d = BinaryDownload.create(user: user, binary: binary, created_at: Date.current - rand((Date.current - user.created_at.to_date).to_i))
 end
 
 def download_public_file
   binary = @public_binaries.sample
   user = User.find(1 + rand(@total_users))
-  BinaryDownload.create(user: user, binary: binary, created_at: user.created_at + rand(100))
+  BinaryDownload.create(user: user, binary: binary, created_at: Date.current - rand((Date.current - user.created_at.to_date).to_i))
 end
 
 @total_users.times do |n|
   user = User.create!(name: Faker::LordOfTheRings.character,
               username: "user#{n}",
-              email: Faker::Internet.safe_email,
+              email: Faker::Internet.unique.safe_email,
               phone: '5555555555',
               status: 'active',
               password: 'banana',
               avatar_url: Faker::Avatar.image("#{Faker::Internet.email}"),
-              created_at: Date.current - rand(365))
+              created_at: Date.current - (3 + rand(20)**(2)))
   puts "User #{user.username} created"
 
 
@@ -44,8 +44,7 @@ end
 
     if binary.save
       puts "Binary #{binary.name} created in home folder."
-
-      rand(5).times do |n|
+      (rand((Date.current - user.created_at.to_date).to_i)).times do |n|
         download_own_file(user, binary)
       end
     end
@@ -88,10 +87,19 @@ end
   end
   n += 1
   puts "Created #{user.name}"
+
+  if user.id == 1
+    User.last.update(name: 'Gandalf', role:'admin', username: "admin1", avatar_url: "https://thumb.ibb.co/htakav/default_profile.jpg")
+  end
 end
 
-User.last.update(name: 'Gandalf', role:'admin', username: "admin1", avatar_url: "https://thumb.ibb.co/htakav/default_profile.jpg")
 
-100.times do |n|
+(@total_users * 4).times do |n|
   download_public_file
+end
+
+50.times do |n|
+  weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+  durations = (500..50000)
+  SessionStat.create(log_in_day: weekdays.sample, duration: rand(durations))
 end
