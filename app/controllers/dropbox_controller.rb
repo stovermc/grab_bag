@@ -8,7 +8,6 @@ class DropboxController < ApplicationController
   def auth_callback
     auth_bearer = authenticator.get_token(params[:code],
                                       :redirect_uri => redirect_uri)
-                                      binding.pry
     session[:token] = auth_bearer.token
 
     account_id = auth_bearer.params["account_id"]
