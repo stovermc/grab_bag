@@ -186,9 +186,13 @@ function drawBinariesByTypePlot(data) {
   myLegend.fontSize = "1.5em";
   chart.draw();
 }
-
-$('#binary_downloads_by_date_plot').append(loadBinaryDownloadsData())
-$('#binary_downloads_public_v_private_plot').append(loadBinaryDownloadsPubPrivData())
-$('#binaries_by_type_plot').append(loadBinariesByTypeData())
 $('#accumulated_users_by_month').append(loadUsersByMonthData())
 $('#log_ins_by_weekday').append(loadLoginsByWeekdayData())
+
+$('#file_downloads-tab').one('click', function() {
+  $('#binary_downloads_public_v_private_plot').append(loadBinaryDownloadsPubPrivData())
+  $('#binary_downloads_by_date_plot').append(loadBinaryDownloadsData())
+})
+$('#files-tab').one('click', function() {
+  $('#binaries_by_type_plot').append(loadBinariesByTypeData())
+})
