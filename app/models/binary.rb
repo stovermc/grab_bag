@@ -27,7 +27,7 @@ class Binary < ApplicationRecord
 
   def self.average_per_folder
     Rails.cache.fetch("average_binaries_per_folder") do
-      (count.to_f / Folder.count.to_f).round(3)
+      (count.to_f / Folder.count.to_f).round(2)
     end
   end
 

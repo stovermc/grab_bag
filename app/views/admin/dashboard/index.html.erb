@@ -8,6 +8,10 @@
       <h2 class="counts"><%= @decorator.user_count %></h2>
     </div>
     <div class="well show-box charts-box">
+      <h4>Average User Session:</h4>
+      <h2 class="counts"><%= @decorator.average_session_duration %> Hours</h2>
+    </div>
+    <div class="well show-box charts-box">
       <h4>Total Folders:</h4>
       <h2 class="counts"><%= @decorator.folder_count %></h2>
     </div>
@@ -18,10 +22,6 @@
     <div class="well show-box charts-box">
       <h4>Average Binaries Per Folder:</h4>
       <h2 class="counts"><%= @decorator.average_binaries_per_folder %></h2>
-    </div>
-    <div class="well show-box charts-box">
-      <h4>Average User Session:</h4>
-      <h2 class="counts"><%= @decorator.average_session_duration %> Hours</h2>
     </div>
   </div>
   <br>
@@ -38,13 +38,13 @@
           <a class="nav-link active tabs" id="users-tab" data-toggle="tab" href="#users"><span class="glyphicon glyphicon-user"></span> Users</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link tabs" id="logins-tab" data-toggle="tab" href="#logins"><span class="glyphicon glyphicon-log-in"></span> Logins</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link tabs" id="files-tab" data-toggle="tab" href="#files"><span class="glyphicon glyphicon-file"></span> Files</a>
         </li>
         <li class="nav-item">
           <a class="nav-link tabs" id="file_downloads-tab" data-toggle="tab" href="#file_downloads"><span class="glyphicon glyphicon-download"></span> File Downloads</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link tabs" id="logins-tab" data-toggle="tab" href="#logins"><span class="glyphicon glyphicon-log-in"></span> Logins</a>
         </li>
       </ul>
 
@@ -54,6 +54,15 @@
             <div class='col-md-12' style='height: 500px'>
               <h2 class="charts-header">Accumulated Users By Month</h2>
               <div class="charts" style='height: 100%' id="accumulated_users_by_month"></div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="tab-pane" id="logins" role="tabpanel">
+          <div class='row'>
+            <div class='col-md-12' style='height: 500px'>
+              <h2 class="charts-header">Logins By Weekday</h2>
+              <div class="charts" style='height: 100%' id="log_ins_by_weekday"></div>
             </div>
           </div>
         </div>
@@ -80,17 +89,6 @@
             </div>
           </div>
         </div>
-
-        <div class="tab-pane" id="logins" role="tabpanel">
-          <div class='row'>
-            <div class='col-md-12' style='height: 500px'>
-              <h2 class="charts-header">Logins By Weekday</h2>
-              <div class="charts" style='height: 100%' id="log_ins_by_weekday"></div>
-            </div>
-          </div>
-        </div>
-
-
       </div>
     </div>
   </div>
