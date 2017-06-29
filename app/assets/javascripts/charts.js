@@ -33,8 +33,6 @@ function drawUsersByMonthPlot(data) {
   y.fontSize = 12;
   var s = chart.addSeries(null, dimple.plot.area);
   s.interpolation = "cardinal";
-  var lines = chart.addSeries(null, dimple.plot.line);
-  lines.lineWeight = 3;
   chart.draw(1500);
 }
 
@@ -182,7 +180,7 @@ function drawBinariesByTypePlot(data) {
   ];
   chart.addMeasureAxis("p", "Total");
   var s = chart.addSeries('File Type', dimple.plot.pie);
-  var myLegend = chart.addLegend("68%", "15%", "10%", "100%", "left");
+  var myLegend = chart.addLegend("78%", "15%", "10%", "100%", "left");
   myLegend.fontSize = "1.5em";
   chart.draw();
 }
@@ -193,6 +191,10 @@ $('#users-tab').on('click', function() {
   $('#accumulated_users_by_month').empty()
   $('#accumulated_users_by_month').load(loadUsersByMonthData())
 })
+$('#logins-tab').on('click', function() {
+  $('#log_ins_by_weekday').empty()
+  $('#log_ins_by_weekday').load(loadLoginsByWeekdayData())
+})
 $('#file_downloads-tab').on('click', function() {
   $('#binary_downloads_public_v_private_plot').empty()
   $('#binary_downloads_by_date_plot').empty()
@@ -202,8 +204,4 @@ $('#file_downloads-tab').on('click', function() {
 $('#files-tab').on('click', function() {
   $('#binaries_by_type_plot').empty()
   $('#binaries_by_type_plot').load(loadBinariesByTypeData())
-})
-$('#logins-tab').on('click', function() {
-  $('#log_ins_by_weekday').empty()
-  $('#log_ins_by_weekday').load(loadLoginsByWeekdayData())
 })

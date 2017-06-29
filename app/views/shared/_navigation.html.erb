@@ -34,7 +34,8 @@
 
     <ul class="nav navbar-nav navbar-right">
       <% if current_user == nil  %>
-      <li><a class="nav-link" href="<%= root_path %>">Sign Up</a></li>
+      <li><a class="nav-link" href="<%= root_path %>">Log In</a></li>
+      <li><a class="nav-link" href="<%= sign_up_path %>">Sign Up</a></li>
       <% else %>
       <li class="dropdown img-dropdown">
         <a href="#" class="dropdown-toggle profile-image" data-toggle="dropdown">

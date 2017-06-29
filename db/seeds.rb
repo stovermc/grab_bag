@@ -7,7 +7,14 @@ DatabaseCleaner.clean_with(:truncation)
 def add_random_binary(folder)
   binaries = [Binary.new(name: "Pizza", folder: folder, data_url: "https://s3-us-west-1.amazonaws.com/1701grabbag/uploads/pizza.png", extension: "png"),
               Binary.new(name: "Stromboli", folder: folder, data_url: "https://s3-us-west-1.amazonaws.com/1701grabbag/uploads/stromboli.jpg", extension: "jpg"),
+              Binary.new(name: "Stromboli", folder: folder, data_url: "https://s3-us-west-1.amazonaws.com/1701grabbag/uploads/stromboli.jpg", extension: "jpg"),
+              Binary.new(name: "Stromboli", folder: folder, data_url: "https://s3-us-west-1.amazonaws.com/1701grabbag/uploads/stromboli.jpg", extension: "jpg"),
+              Binary.new(name: "Stromboli", folder: folder, data_url: "https://s3-us-west-1.amazonaws.com/1701grabbag/uploads/stromboli.jpg", extension: "jpg"),
               Binary.new(name: "Bratwurst", folder: folder, data_url: "https://s3-us-west-1.amazonaws.com/1701grabbag/uploads/recipe_grilled-brat.pdf", extension: "pdf"),
+              Binary.new(name: "Bratwurst", folder: folder, data_url: "https://s3-us-west-1.amazonaws.com/1701grabbag/uploads/recipe_grilled-brat.pdf", extension: "pdf"),
+              Binary.new(name: "Bratwurst", folder: folder, data_url: "https://s3-us-west-1.amazonaws.com/1701grabbag/uploads/recipe_grilled-brat.pdf", extension: "pdf"),
+              Binary.new(name: "Bratwurst", folder: folder, data_url: "https://s3-us-west-1.amazonaws.com/1701grabbag/uploads/recipe_grilled-brat.pdf", extension: "pdf"),
+              Binary.new(name: "Blackberry Pie is ok", folder: folder, data_url: "https://s3-us-west-1.amazonaws.com/1701grabbag/uploads/blackberry_pie.txt", extension: "txt"),
               Binary.new(name: "Blackberry Pie is ok", folder: folder, data_url: "https://s3-us-west-1.amazonaws.com/1701grabbag/uploads/blackberry_pie.txt", extension: "txt")]
   binaries.sample
 end
@@ -89,7 +96,7 @@ end
   puts "Created #{user.name}"
 
   if user.id == 1
-    User.last.update(name: 'Gandalf', role:'admin', username: "admin1", avatar_url: "https://thumb.ibb.co/htakav/default_profile.jpg")
+    User.last.update(name: 'Gandalf', role:'admin', username: "Admin", avatar_url: "http://สภาเครือข่ายอาเซียน-ประเทศไทย.com/images/26246-200.png")
   end
 end
 
@@ -98,7 +105,7 @@ end
   download_public_file
 end
 
-50.times do |n|
+200.times do |n|
   weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
   durations = (500..50000)
   SessionStat.create(log_in_day: weekdays.sample, duration: rand(durations))

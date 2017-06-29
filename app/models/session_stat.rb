@@ -8,7 +8,7 @@ class SessionStat < ApplicationRecord
   end
 
   def self.average_duration
-    ((average(:duration) / 60) / 60).round(3)
+    ((average(:duration) / 60) / 60).round(2)
   end
 
 end

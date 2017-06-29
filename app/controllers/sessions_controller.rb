@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    SessionStat.last.update(duration: (SessionStat.last.created_at - Time.now) * 60)
+    SessionStat.last.update(duration: (Time.now - SessionStat.last.created_at))
     session[:user_id] = nil
     redirect_to root_path
   end

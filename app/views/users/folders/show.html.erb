@@ -1,63 +1,75 @@
-<div class="row">
-  <div class='col-md-3'>
-    <h1 class="username"><%= current_folder.owner.username %></h1>
-    <%= image_tag(current_folder.owner.avatar_url + "?type=large", class: "profile-pic")%> 
+<div class = "topper"></div>
+  <div class="row">
+    <div class='col-md-4 col-md-offset-4 col-centered'>
+      <h1 class="username"><%= current_folder.owner.username %></h1>
+      <%= image_tag(current_folder.owner.avatar_url + "?type=large", class: "profile-pic")%> 
+    </div>
   </div>
-</div>
-<br>
-<br>
-<div class='row'>
-  <div class='col-md-6'>
-    <%= link_to "New Folder", users_new_folder_path(@current_folder.owner.username), class: "btn btn-success" %>
-    <%= link_to "Upload File", users_new_binary_path(@current_folder.owner.username, @current_folder.route), class: "btn btn-success"%>
-    <%= link_to "Share this Folder", users_folder_new_share_path, class: "btn btn-success"%>
-    <%= link_to 'Download Folder', users_folder_path(format: :zip), class: "btn btn-success"%>
+  <br>
+  <br>
+  <div class='row'>
+    <div class='col-md-8 col-md-offset-2'>
+      <%= link_to "New Folder", users_new_folder_path(@current_folder.owner.username), class: "btn btn-default" %>
+      <%= link_to "Upload File", users_new_binary_path(@current_folder.owner.username, @current_folder.route), class: "btn btn-default"%>
+      <%= link_to "Share this Folder", users_folder_new_share_path, class: "btn btn-default"%>
+      <%= link_to 'Download Folder', users_folder_path(format: :zip), class: "btn btn-default"%>
+    </div>
   </div>
+  <br>
+  <br>
 </div>
-<br>
-<br>
 
-<div class='row'>
-  <div class='col-md-9'>
-      <h2><%= image_tag("good_blue_folder.png", height: 40) %>&nbsp;<%= @current_folder.name %> </h2>
-      <%= render_breadcrumbs :separator => ' / ' %>
-      <% unless @current_folder.children.empty? %>
-      <div class="folder_contents">
-        <table class="table">
-          <div class="folders">
-            <th><h3 class="table-label">Name</h3></th>
-            <th><h3 class="table-label">Type</h3></th>
-            <th><h3 class="table-label">Date Changed</h3></th>
-            <th><h3 class="table-label">Status</h3></th>
-            <th></th>
-            <th></th>
-            <% @current_folder.folders.each do |folder|%>
-              <tr class="folder">
-                <td><h4> <%= link_to folder.name, "#{folder.url}"%></h4></td>
-                <td><h4>  Folder </h4></td>
-                <td><h4> <%=folder.updated_at%></h4></td>
-                <td><h4> <%=folder.permission%></h4></td>
+  <div class='row'>
+    <div class='col-md-10 col-md-offset-1'>
+        <h2><%= image_tag("good_blue_folder.png", height: 40) %>&nbsp;<%= @current_folder.name %> </h2>
+        <%= render_breadcrumbs :separator => ' / ' %>
+        <% unless @current_folder.children.empty? %>
+        <div class="folder_contents">
+          <table class="table">
+            <div class="folders">
+              <th><h3 class="table-label">Name</h3></th>
+              <th><h3 class="table-label">Type</h3></th>
+              <th><h3 class="table-label">Date Changed</h3></th>
+              <th><h3 class="table-label">Status</h3></th>
+              <th></th>
+              <th></th>
+              <% @current_folder.folders.each do |folder|%>
+                <tr class="folder">
+                  <td><h4> <%= link_to folder.name, "#{folder.url}"%></h4></td>
+                  <td><h4>  Folder </h4></td>
+                  <td><h4> <%=folder.updated_at%></h4></td>
+                  <td><h4> <%=folder.permission%></h4></td>
+                  <td></td>
+                  <td><h4> <%= link_to 'Delete', folder.url, data: {confirm: 'Are you sure? This will delete all the contents inside the folder as well.'}, method: :delete, class: 'btn btn-danger' %></h4></td>
+                </tr>
+              <% end %>
+              <br>
+            </div>
+          <div class="binaries">
+            <% @current_folder.binaries.each do |binary|%>
+              <tr class="binary">
+                <td><h4> <%=link_to binary.name, binary.url%></h4></td>
+                <td><h4> <%=binary.extension%></h4></td>
+                <td><h4> <%=binary.updated_at%></h4></td>
                 <td></td>
-                <td><h4> <%= link_to 'Delete', folder.url, data: {confirm: 'Are you sure? This will delete all the contents inside the folder as well.'}, method: :delete, class: 'btn btn-danger' %></h4></td>
+                <td><h4> <%= link_to  'Download', new_binary_download_path(binary_id: binary.id), class: "btn btn-default"%> </h4> </td>
+                <td><h4> <%= link_to 'Delete', binary.url, data: {confirm: 'Are you sure?'}, method: :delete, class: 'btn btn-danger' %> </h4> </td>
               </tr>
             <% end %>
             <br>
           </div>
-        <div class="binaries">
-          <% @current_folder.binaries.each do |binary|%>
-            <tr class="binary">
-              <td><h4> <%=link_to binary.name, binary.url%></h4></td>
-              <td><h4> <%=binary.extension%></h4></td>
-              <td><h4> <%=binary.updated_at%></h4></td>
-              <td></td>
-              <td><h4> <%= link_to  'Download', new_binary_download_path(binary_id: binary.id), class: "btn btn-primary"%> </h4> </td>
-              <td><h4> <%= link_to 'Delete', binary.url, data: {confirm: 'Are you sure?'}, method: :delete, class: 'btn btn-danger' %> </h4> </td>
-            </tr>
-          <% end %>
-          <br>
-        </div>
-      </table>
-    </div>
-  <% else %>
-    <h3> This folder is empty. Try uploading a file! </h3>
-  <% end %>
+        </table>
+      </div>
+    <% else %>
+      <h3> This folder is empty. Try uploading a file! </h3>
+    <% end %>
+  </div>
+
+
+
+
+
+
+
+
+
