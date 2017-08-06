@@ -1,7 +1,7 @@
 require 'database_cleaner'
 
 DatabaseCleaner.clean_with(:truncation)
-@total_users = 300
+@total_users = 40
 @public_binaries = []
 
 def add_random_binary(folder)
@@ -105,7 +105,7 @@ end
   download_public_file
 end
 
-200.times do |n|
+50.times do |n|
   weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
   durations = (500..50000)
   SessionStat.create(log_in_day: weekdays.sample, duration: rand(durations))
